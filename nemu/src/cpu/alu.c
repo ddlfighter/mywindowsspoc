@@ -76,7 +76,7 @@ uint32_t alu_add(uint32_t src, uint32_t dest, size_t data_size)
 	Set_ZF(res,data_size);
 	Set_SF(res,data_size);
 	Set_OF_add(res,src,dest,data_size);
-	return (res& (0xffffffff>>(32-data_size));
+	return (res& (0xffffffff>>(32-data_size)));
 	
 #endif
 }
