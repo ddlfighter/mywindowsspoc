@@ -80,7 +80,7 @@ void Set_CF_sub(uint32_t des,uint32_t src,size_t data_size)
 		cpu.eflags.CF = 0;
 }
 void Set_OF_sub(uint32_t src,uint32_t dest,uint32_t res,size_t data_size){
-	des = sign_ext(des&(0xFFFFFFFF>>(32-data_size)),data_size);
+	dest = sign_ext(dest&(0xFFFFFFFF>>(32-data_size)),data_size);
 	src = sign_ext(src&(0xFFFFFFFF>>(32-data_size)),data_size);
 	res = sign_ext(res&(0xFFFFFFFF>>(32-data_size)),data_size);
 	if(src==(0xFFFFFFFF>>(32-data_size)))
@@ -89,8 +89,13 @@ void Set_OF_sub(uint32_t src,uint32_t dest,uint32_t res,size_t data_size){
 		else
 		cpu.eflags.OF = 1;
 	else
-		Set_OF_add(res,-src,dest,data_size);
-}
+		{if(sign(dest)!=sign(src))
+			if(sign(src)==sign(res))
+				cpu.eflags.OF = 1;
+			else
+				cpu.eflags.OF = 0;}
+		else
+			cpu.eflags.OF = 0;
 }
 uint32_t alu_add(uint32_t src, uint32_t dest, size_t data_size)
 {
