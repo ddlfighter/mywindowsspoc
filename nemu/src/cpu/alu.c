@@ -89,7 +89,7 @@ void Set_OF_sub(uint32_t src,uint32_t dest,uint32_t res,size_t data_size){
 		else
 		cpu.eflags.OF = 1;
 	else
-		Set_OF_add(res,src,dest,data_size);
+		Set_OF_add(res,-src,dest,data_size);
 }
 }
 uint32_t alu_add(uint32_t src, uint32_t dest, size_t data_size)
