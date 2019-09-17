@@ -83,8 +83,8 @@ void Set_OF_sub(uint32_t src,uint32_t dest,uint32_t res,size_t data_size){
 	des = sign_ext(des&(0xFFFFFFFF>>(32-data_size)),data_size);
 	src = sign_ext(src&(0xFFFFFFFF>>(32-data_size)),data_size);
 	res = sign_ext(res&(0xFFFFFFFF>>(32-data_size)),data_size);
-	if(dest==(0xFFFFFFFF>>(32-data_size)))
-		if(src>=0)
+	if(src==(0xFFFFFFFF>>(32-data_size)))
+		if(dest>=0)
 		cpu.eflags.OF = 0;
 		else
 		cpu.eflags.OF = 1;
