@@ -48,7 +48,7 @@ void Set_SF(uint32_t res,size_t data_size){
 void Set_PF(uint32_t res,size_t data_size){
 	int count = 0;
 	uint32_t tmp = 0x00000001;
-	for(size_t i = 1; i <= data_size; i++)
+	for(size_t i = 1; i <= 8; i++)
 	{
 		if((res&tmp) != 0)
 		count++;
