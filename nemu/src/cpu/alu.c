@@ -3,8 +3,32 @@
 void Set_ZF(uint32_t res,size_t data_size);  //general
 void Set_SF(uint32_t res,size_t data_size);  //general
 void Set_PF(uint32_t res,size_t data_size);  //general
-void Set_OF(uint32_t res,uint32_t src,uint32_t des,size_t data_size);
+void Set_OF_add(uint32_t res,uint32_t src,uint32_t des,size_t data_size);
 void Set_CF();
+void Set_OF_add(uint32_t res,uint32_t src,uint32_t des,size_t data_size){
+	switch(data_size){
+	case 8:
+		res = sign_ext(result &0xFF,8);
+		src = sign_ext(src & 0xFF, 8);
+		des = sign_ext(des & 0xFF, 8);
+		break;
+	case 16:
+		res = sign_ext(res & 0xFFFF, 16);
+		src = sign_ext(src & 0xFFFF, 16);
+		des = sign_ext(dest& 0xFFFF, 16);
+		break;
+	default:break;
+}
+if(sign(src) == sign(dest)){
+	if(sign(src)!= sign(result))
+		cpu.eflags.OF = 1;
+	else
+		cpu.eflags.OF = 0;
+	}
+else{
+	cpu.eflags.OF = 0;
+    }
+}
 void Set_ZF(uint32_t res,size_t data_size){
 	uint32_t tmp = tmp&(0xFFFFFFFF>>(32-data_size);
 	if (res == 0)
