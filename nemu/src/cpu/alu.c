@@ -31,6 +31,21 @@ else{
 	cpu.eflags.OF = 0;
     }
 }
+void Set_OF_adc(uint32_t result,uint32_t src,uint32_t dest,size_t data_size){
+	switch(data_size){
+		case 8:
+			result = sign_ext(result&0xFF,8);
+			src = sign_ext(src & 0xFF, 8);
+			dest = sign_ext(Dest & 0xFF,8);
+			break;
+		case 16:
+			result = sign_ext(result&0xffff,16);
+			src = sign_ext(src&0xffff,16);
+			dest = sign_ext(dest&0xffff,16);
+			break;
+	if(sign(src)==sign(dest)){
+		if(sign(src)!=sign(result)
+				)}}}
 void Set_ZF(uint32_t res,size_t data_size){
 	uint32_t tmp = res&(0xFFFFFFFF>>(32-data_size));
 	if (tmp == 0)
@@ -96,7 +111,7 @@ uint32_t alu_adc(uint32_t src, uint32_t dest, size_t data_size)
 	Set_PF(res,data_size);
 	Set_ZF(res,data_size);
 	Set_SF(res,data_size);
-	Set_CF_add(res,dest,src,data_size);
+	Set_CF_add(res,src,data_size);
 	Set_OF_add(res,src,dest,data_size);
 	return (res & (0xffffffff>>(32-data_size)));
 
