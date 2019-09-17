@@ -31,19 +31,7 @@ else{
 	cpu.eflags.OF = 0;
     }
 }
-void Set_OF_adc(uint32_t result,uint32_t src,uint32_t dest,size_t data_size){
-	switch(data_size){
-		case 8:
-			result = sign_ext(result&0xFF,8);
-			src = sign_ext(src & 0xFF, 8);
-			dest = sign_ext(dest & 0xFF,8);
-			break;
-		case 16:
-			result = sign_ext(result&0xffff,16);
-			src = sign_ext(src&0xffff,16);
-			dest = sign_ext(dest&0xffff,16);
-			break;
-	}}
+
 void Set_ZF(uint32_t res,size_t data_size){
 	uint32_t tmp = res&(0xFFFFFFFF>>(32-data_size));
 	if (tmp == 0)
@@ -80,8 +68,37 @@ void Set_CF_adc(uint32_t res,uint32_t des,uint32_t src,size_t data_size){
    	if(cpu.eflags.CF == 0)
 	cpu.eflags.CF = res < src;
 	else
-	cpu.eflags.CF = res <= src;	
-		
+	cpu.eflags.CF = res <= src;		
+}
+void Set_CF_sub(uint32_t des,uint32_t src)
+{
+	if(des<src)
+		cpu.eflags.CF = 1;
+	else
+		cpu.eflags.CF = 0;
+}
+void Set_OF_sub(uint32_t src,uint32_t dest,uint32_t res,size_t data_size){
+	switch(data_size){
+		case 8:
+			res = sign_ext(res & 0xFF,8);
+			src = sign_ext(src & 0xFF,8);
+			dest = sign_ext(dest & 0xFF,8);
+			break;
+		case 16:
+			res = sign_ext(res & 0xFFFF, 16);
+			src = sign_ext(src & 0xFFFF, 16);
+			dest = sign_ext(dest & 0xFFFF,16);
+			break;
+		default:break;
+	if(sign(src)!=sign(dest))
+	{
+		if(sign(res)==sign(src))
+			cpu.eflags.OF = 1;
+		else
+			cpu.eflags.OF = 0;
+	}
+	else
+		cpu.eflags.OF = 0;
 }
 uint32_t alu_add(uint32_t src, uint32_t dest, size_t data_size)
 {
@@ -124,9 +141,12 @@ uint32_t alu_sub(uint32_t src, uint32_t dest, size_t data_size)
 #ifdef NEMU_REF_ALU
 	return __ref_alu_sub(src, dest, data_size);
 #else
-	printf("\e[0;31mPlease implement me at alu.c\e[0m\n");
-	assert(0);
-	return 0;
+	uint32_t res = 0;
+	res = dest - src;
+	Set_PF(res,data_size);
+	Set_ZF(res,data_size);
+	Set_SF(res,data_size);
+	return (res&(0xffffffff>>(32-data_size)));
 #endif
 }
 
