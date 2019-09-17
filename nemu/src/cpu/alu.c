@@ -71,7 +71,7 @@ uint32_t alu_add(uint32_t src, uint32_t dest, size_t data_size)
 #else
         uint32_t res = 0;
 	res = src + dest;
-	Set_CF_add(res,sec,data_size);
+	Set_CF_add(res,src,data_size);
 	Set_PF(res);
 	Set_ZF(res,data_size);
 	Set_SF(res,data_size);
