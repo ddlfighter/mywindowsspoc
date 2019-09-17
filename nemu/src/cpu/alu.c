@@ -4,7 +4,7 @@ void Set_ZF(uint32_t res,size_t data_size);  //general
 void Set_SF(uint32_t res,size_t data_size);  //general
 void Set_PF(uint32_t res,size_t data_size);  //general
 void Set_OF_add(uint32_t res,uint32_t src,uint32_t des,size_t data_size);
-void Set_CF();
+void Set_CF_add(uint32_t res,uint32_t src,size_t data_size);
 void Set_OF_add(uint32_t res,uint32_t src,uint32_t des,size_t data_size){
 	switch(data_size){
 	case 8:
@@ -59,6 +59,11 @@ void Set_PF(uint32_t res,size_t data_size){
 	else
 		cpu.eflags.PF = 0;
 }	
+void set_CF_add(uint32_t res,uint32_t src,size_t data_size){
+	res = sign_ext(res&(0xFFFFFFFF>>(32-data_size)),data_size);
+	src = sign_ext(src&(0xFFFFFFFF>>(32-data_size)),data_size);
+	cpu.eflags.CF = result < src;
+}
 uint32_t alu_add(uint32_t src, uint32_t dest, size_t data_size)
 {
 #ifdef NEMU_REF_ALU
@@ -66,9 +71,13 @@ uint32_t alu_add(uint32_t src, uint32_t dest, size_t data_size)
 #else
         uint32_t res = 0;
 	res = src + dest;
-	
+	set_CF_add(res,sec,data_size);
+	set_PF(res);
+	set_ZF(res,data_size);
+	set_SF(res,data_size);
+	set_OF_add(res,src,dest,data_size);
 	return (res& (0xffffffff>>(32-data_size));
-	return 0;
+	
 #endif
 }
 
