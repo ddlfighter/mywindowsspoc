@@ -94,7 +94,7 @@ void Set_OF_sub(uint32_t src,uint32_t dest,uint32_t res,size_t data_size){
 		default:break;
 	if(sign(src)!=sign(dest))
 	{
-		if(sign(res)==sign(src))
+		if(sign(res)==sign(src)&&src!=0)
 			cpu.eflags.OF = 1;
 		else
 			cpu.eflags.OF = 0;
