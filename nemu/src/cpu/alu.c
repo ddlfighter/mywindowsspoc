@@ -43,9 +43,7 @@ void Set_OF_adc(uint32_t result,uint32_t src,uint32_t dest,size_t data_size){
 			src = sign_ext(src&0xffff,16);
 			dest = sign_ext(dest&0xffff,16);
 			break;
-	if(sign(src)==sign(dest)){
-		if(sign(src)!=sign(result)
-				)}}}
+	}}
 void Set_ZF(uint32_t res,size_t data_size){
 	uint32_t tmp = res&(0xFFFFFFFF>>(32-data_size));
 	if (tmp == 0)
