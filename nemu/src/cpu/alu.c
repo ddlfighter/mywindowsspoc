@@ -37,13 +37,8 @@ void Set_ZF(uint32_t res,size_t data_size){
 		cpu.eflags.ZF = 0;
 }
 void Set_SF(uint32_t res,size_t data_size){
-	uint32_t tmp = res;
-	tmp = tmp & (0x00000001 << data_size);
-	if(tmp!=0)
-		cpu.eflags.SF = 0;
-	else
-		cpu.eflags.SF = 1;
-	
+	res = sign_ext(res &(0xFFFFFFFF >>(32-date_size)),data_size);
+	cpu.eflags.SF = sign(res);
 }
 void Set_PF(uint32_t res,size_t data_size){
 	int count = 0;
