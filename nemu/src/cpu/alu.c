@@ -77,7 +77,10 @@ void Set_CF_add(uint32_t res,uint32_t src,size_t data_size){
 void Set_CF_adc(uint32_t res,uint32_t des,uint32_t src,size_t data_size){
 	res = sign_ext(res&(0xFFFFFFFF>>(32-data_size)),data_size);
 	src = sign_ext(src&(0xFFFFFFFF>>(32-data_size)),data_size);
-	
+   	if(cpu.eflags.CF == 0)
+	cpu.eflags.CF = res < src;
+	else
+	cpu.eflags.CF = res <= src;	
 		
 }
 uint32_t alu_add(uint32_t src, uint32_t dest, size_t data_size)
@@ -109,7 +112,7 @@ uint32_t alu_adc(uint32_t src, uint32_t dest, size_t data_size)
 	Set_PF(res,data_size);
 	Set_ZF(res,data_size);
 	Set_SF(res,data_size);
-	Set_CF_add(res,src,data_size);
+	Set_CF_adc(res,des,src,data_size);
 	Set_OF_add(res,src,dest,data_size);
 	return (res & (0xffffffff>>(32-data_size)));
 
