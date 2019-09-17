@@ -59,7 +59,7 @@ void Set_PF(uint32_t res,size_t data_size){
 	else
 		cpu.eflags.PF = 0;
 }	
-void set_CF_add(uint32_t res,uint32_t src,size_t data_size){
+void Set_CF_add(uint32_t res,uint32_t src,size_t data_size){
 	res = sign_ext(res&(0xFFFFFFFF>>(32-data_size)),data_size);
 	src = sign_ext(src&(0xFFFFFFFF>>(32-data_size)),data_size);
 	cpu.eflags.CF = res < src;
