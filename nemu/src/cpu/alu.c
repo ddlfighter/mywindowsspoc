@@ -1,23 +1,27 @@
 #include "cpu/cpu.h"
 
-void Set_ZF(uint32_t res);
+void Set_ZF(uint32_t res,size_t data_size);
 void Set_SF(uint32_t res,size_t data_size);
 void Set_PF(uint32_t res,size_t data_size);
-void Set_OF(uint32_t res,size_t data_size);
+void Set_OF(uint32_t res,uint32_t src,uint32_t des,size_t data_size);
 void Set_CF();
-void Set_ZF(uint32_t res){
+void Set_ZF(uint32_t res,size_t data_size){
+	uint32_t tmp = tmp&(0xFFFFFFFF>>(32-data_size);
 	if (res == 0)
-		eflags.val.ZF = 0;
+		cpu.eflags.ZF = 1;
+	else
+		cpu.eflags.ZF = 0;
 }
 void Set_SF(uint32_t res,size_t data_size){
 	uint32_t tmp = res;
 	tmp = tmp & (0x00000001 << data_size);
 	if(tmp!=0)
-		eflags.val.SF = 0;
+		cpu.eflags.SF = 0;
 	else
-		eflags.val.SF = 1;
+		cpu.eflags.SF = 1;
 	
 }
+
 uint32_t alu_add(uint32_t src, uint32_t dest, size_t data_size)
 {
 #ifdef NEMU_REF_ALU
