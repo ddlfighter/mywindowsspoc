@@ -30,7 +30,7 @@ else{
     }
 }
 void Set_ZF(uint32_t res,size_t data_size){
-	uint32_t tmp = tmp&(0xFFFFFFFF>>(32-data_size);
+	uint32_t tmp = tmp&(0xFFFFFFFF>>(32-data_size));
 	if (res == 0)
 		cpu.eflags.ZF = 1;
 	else
