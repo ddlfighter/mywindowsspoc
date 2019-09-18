@@ -333,8 +333,13 @@ uint32_t alu_shr(uint32_t src, uint32_t dest, size_t data_size)
 	return __ref_alu_shr(src, dest, data_size);
 #else
 	uint32_t res = 0;
-	src = src &(0xffffffff>>(32-data_size));
+	if(src<data_size)
 	res = dest >> src;
+	else
+	{
+		res = 0;
+	}
+	
 	Set_PF(res,data_size);
 	Set_ZF(res,data_size);
 	Set_SF(res,data_size);
