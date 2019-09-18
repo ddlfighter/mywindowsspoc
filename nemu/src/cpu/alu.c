@@ -96,7 +96,7 @@ void Set_CF_shl(uint32_t dest,uint32_t src,size_t data_size){
 	if((dest&signdet)!=0)
 		cpu.eflags.CF = 1;
 	else
-		cpu.eflag.CF = 0;
+		cpu.eflags.CF = 0;
 	
 }
 void Set_OF_sub(uint32_t src,uint32_t dest,uint32_t res,size_t data_size){
