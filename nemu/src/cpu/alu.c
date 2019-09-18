@@ -218,7 +218,7 @@ uint64_t alu_mul(uint32_t src, uint32_t dest, size_t data_size)
 	uint64_t res = 0;
 	res = (uint64_t)src * (uint64_t)dest;
 	res = res &(0xffffffffffffffff>>(64-2*data_size));
-	uint64_t tmp = 0xffffffffffffffff&(0x1<<data_size);
+	uint64_t tmp = 0xffffffffffffffff<<data_size;
 	if((tmp&res)!=0)
 	{
 		cpu.eflags.OF = 1;
