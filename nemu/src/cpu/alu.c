@@ -79,6 +79,16 @@ void Set_CF_sub(uint32_t des,uint32_t src,size_t data_size)
 	else
 		cpu.eflags.CF = 0;
 }
+void Set_CF_sbb(uint32_t des,uint32_t src,size_t data_size){
+	des = sign_ext(des&(0xFFFFFFFF>>(32-data_size)),data_size);
+	src = sign_ext(src&(0xFFFFFFFF>>(32-data_size)),data_size);
+	if(cpu.eflags.CF == 0)
+		cpu.eflags.CF = des < src;
+	else
+	{
+		cpu.eflags.CF = des<=src;
+	}
+}
 void Set_OF_sub(uint32_t src,uint32_t dest,uint32_t res,size_t data_size){
 	dest = sign_ext(dest&(0xFFFFFFFF>>(32-data_size)),data_size);
 	src = sign_ext(src&(0xFFFFFFFF>>(32-data_size)),data_size);
@@ -100,6 +110,7 @@ void Set_OF_sub(uint32_t src,uint32_t dest,uint32_t res,size_t data_size){
 			else
 			cpu.eflags.OF = 0;
 }}
+
 uint32_t alu_add(uint32_t src, uint32_t dest, size_t data_size)
 {
 #ifdef NEMU_REF_ALU
@@ -157,9 +168,13 @@ uint32_t alu_sbb(uint32_t src, uint32_t dest, size_t data_size)
 #ifdef NEMU_REF_ALU
 	return __ref_alu_sbb(src, dest, data_size);
 #else
-	printf("\e[0;31mPlease implement me at alu.c\e[0m\n");
-	assert(0);
-	return 0;
+	uint32_t res = 0;
+	res = dest - src -CF;
+	Set_PF(res,data_size);
+	Set_ZF(res,data_size);
+	Set_SF(res,data_size);
+	Set_OF_sub(src,dest,res,data_size);
+	Set_CF_sbb(dest,src,data_size);
 #endif
 }
 
