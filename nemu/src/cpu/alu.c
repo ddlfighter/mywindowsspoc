@@ -169,12 +169,13 @@ uint32_t alu_sbb(uint32_t src, uint32_t dest, size_t data_size)
 	return __ref_alu_sbb(src, dest, data_size);
 #else
 	uint32_t res = 0;
-	res = dest - src -CF;
+	res = dest - src - cpu.eflags.CF;
 	Set_PF(res,data_size);
 	Set_ZF(res,data_size);
 	Set_SF(res,data_size);
 	Set_OF_sub(src,dest,res,data_size);
 	Set_CF_sbb(dest,src,data_size);
+	return (res&(0xffffffff>>(32-data_size)));
 #endif
 }
 
