@@ -373,7 +373,7 @@ uint32_t alu_sar(uint32_t src, uint32_t dest, size_t data_size)
 	uint32_t res = 0;
 	uint32_t sign = 0x1;
 	//copy the sign
-	sign = sign & (dest>>(data_size));
+	sign = sign & (dest>>(data_size-1));
 	dest=dest&(0xffffffff>>(32-data_size)); //JQ
 	//make up
 	uint32_t tmp = 0xffffffff;
