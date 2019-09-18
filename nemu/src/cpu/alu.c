@@ -262,7 +262,10 @@ int32_t alu_idiv(int64_t src, int64_t dest, size_t data_size)
 #ifdef NEMU_REF_ALU
 	return __ref_alu_idiv(src, dest, data_size);
 #else
-		int32_t res = src
+		if(src==0)
+		exit(0);
+		int32_t res = dest/src;
+		return res&(0xffffffff>>(32-data_size));
 #endif
 }
 
