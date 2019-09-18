@@ -102,11 +102,7 @@ void Set_CF_shl(uint32_t dest,uint32_t src,size_t data_size){
 	}
 	else
 	{
-		unit32_t signdet = 0x1;
-		if(dest&signdet!=0)
-			cpu.eflags.CF = 1;
-		else
-			cpu.eflags.CF = 0;
+		cpu.eflags.CF = 0;
 	}
 	
 	
