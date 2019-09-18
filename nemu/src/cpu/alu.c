@@ -94,7 +94,7 @@ void Set_CF_shl(uint32_t dest,uint32_t src,size_t data_size){
 	if(src<=data_size)
 	{
 		uint32_t signdet = 0x1<<(data_size-src);
-		if(dest&signdet!=0)
+		if((dest&signdet)!=0)
 			cpu.eflags.CF = 1;
 		else
 			cpu.eflags.CF = 0;
