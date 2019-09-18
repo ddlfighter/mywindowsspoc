@@ -313,7 +313,7 @@ uint32_t alu_shl(uint32_t src, uint32_t dest, size_t data_size)
 #ifdef NEMU_REF_ALU
 	return __ref_alu_shl(src, dest, data_size);
 #else
-	uint res = 0;
+	uint32_t res = 0;
 	res = dest << src;
 	Set_PF(res,data_size);
 	Set_ZF(res,data_size);
