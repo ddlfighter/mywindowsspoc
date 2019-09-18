@@ -89,10 +89,10 @@ void Set_CF_sbb(uint32_t des,uint32_t src,size_t data_size){
 		cpu.eflags.CF = des<=src;
 	}
 }
-Set_CF_shl(dest,src,data_size){
+Set_CF_shl(uint32_t dest,uint32_t src,size_t data_size){
 	bool flag = false;
 	dest = sign_ext(dest&(0xFFFFFFFF>>(32-data_size)),data_size);
-	for(int i = 1; i<src;i++)
+	for(uint32_t i = 1; i<src;i++)
 	{
 		if(sign(dest)!=sign(dest<<1))
 			{
