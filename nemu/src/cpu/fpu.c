@@ -99,12 +99,12 @@ inline uint32_t internal_normalize(uint32_t sign, int32_t exp, uint64_t sig_grs)
 		/* TODO: round up and remove the GRS bits */
 		uint64_t Ifadd1 = 0x7;
 		Ifadd1 = Ifadd1 & sig_grs;  //cut down 3 low bits
-		if(Ifadd1>0x7)
+		if(Ifadd1>0x4)
 		{
 			sig_grs >>= 3;
 			sig_grs += 0x1;
 		}
-		else if(Ifadd1<0x7)
+		else if(Ifadd1<0x4)
 		{
 			sig_grs >>= 3;
 		}
