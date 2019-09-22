@@ -127,9 +127,8 @@ inline uint32_t internal_normalize(uint32_t sign, int32_t exp, uint64_t sig_grs)
 			overflow = true;
 		}
 	}
-	sig_grs = sig_grs & 0x7fffff;		
-	}
-
+}
+	sig_grs = sig_grs & 0x7fffff;	
 	FLOAT f;
 	f.sign = sign;
 	f.exponent = (uint32_t)(exp & 0xff);
