@@ -125,7 +125,6 @@ inline uint32_t internal_normalize(uint32_t sign, int32_t exp, uint64_t sig_grs)
 			sig_grs = 0x0000000000000000;
 			exp = 0xff;
 			overflow = true;
-			break;
 		}
 	}
 	sig_grs = sig_grs & 0x7fffff;		
