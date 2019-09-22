@@ -129,6 +129,8 @@ inline uint32_t internal_normalize(uint32_t sign, int32_t exp, uint64_t sig_grs)
 		}
 	}
 }
+	if(exp==1&&sig_grs==0)
+		exp=0;
 	sig_grs = sig_grs & 0x7ffffff;	
 	FLOAT f;
 	f.sign = sign;
