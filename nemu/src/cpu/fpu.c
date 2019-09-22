@@ -115,7 +115,7 @@ inline uint32_t internal_normalize(uint32_t sign, int32_t exp, uint64_t sig_grs)
 			if((sig_grs&0x1)==1)
 			sig_grs += 1; 
 		}
-		printf("float sig_grs = %f",sig_grs);	
+		printf("float sig_grs = %lld",sig_grs);	
 	while((sig_grs >> 23) > 1)
 	{
 		sig_grs >>= 1;
