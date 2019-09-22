@@ -128,7 +128,7 @@ inline uint32_t internal_normalize(uint32_t sign, int32_t exp, uint64_t sig_grs)
 			break;
 		}
 	}
-	sig_grs = sig_grs & 0x7fffffff;			
+	sig_grs = sig_grs & 0x7fffff;		
 	}
 
 	FLOAT f;
