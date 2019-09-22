@@ -115,6 +115,7 @@ inline uint32_t internal_normalize(uint32_t sign, int32_t exp, uint64_t sig_grs)
 			if((sig_grs&0x1)==1)
 			sig_grs += 1; 
 		}
+		printf("float sig_grs = %f",sig_grs);	
 	while((sig_grs >> 23) > 1)
 	{
 		sig_grs >>= 1;
@@ -128,8 +129,7 @@ inline uint32_t internal_normalize(uint32_t sign, int32_t exp, uint64_t sig_grs)
 		}
 	}
 }
-	sig_grs = sig_grs & 0x7fffff;
-	exp = exp&&0xfe;	
+	sig_grs = sig_grs & 0x7ffffff;	
 	FLOAT f;
 	f.sign = sign;
 	f.exponent = (uint32_t)(exp & 0xff);
