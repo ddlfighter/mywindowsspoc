@@ -97,12 +97,35 @@ inline uint32_t internal_normalize(uint32_t sign, int32_t exp, uint64_t sig_grs)
 	if (!overflow)
 	{
 		/* TODO: round up and remove the GRS bits */
-		if(sig_grs&0x1==1)
+		uint64_t Ifadd1 = 0x7;
+		Ifadd1 = Ifadd1 & sig_grs;  //cut down 3 low bits
+		if(Ifadd1>0x7)
 		{
+			sig_grs >>= 3;
 			sig_grs += 0x1;
 		}
-		sig_grs = sig_grs>>3;
-		
+		else if(Ifadd1<0x7)
+		{
+			sig_grs >>= 3;
+		}
+		else
+		{
+			sig_grs >>= 3;
+			if(sig_grs&0x1==1)
+			sig_grs += 1;
+		}
+	while((sig_grs >> 23) > 1)
+	{
+		sig_grs >>= 1;
+		exp++;
+		if (exp >= 0xff)
+		{
+			/* TODO: assign the number to infinity */
+			sig_grs = 0x0000000000000000;
+			exp = 0xff;
+			overflow = true;
+		}
+	}			
 	}
 
 	FLOAT f;
