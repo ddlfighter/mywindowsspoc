@@ -25,6 +25,7 @@ if(sign(src) == sign(des)){
 	if(sign(src)!= sign(res))
 		cpu.eflags.OF = 1;
 	else
+
 		cpu.eflags.OF = 0;
 	}
 else{
