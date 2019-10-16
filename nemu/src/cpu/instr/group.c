@@ -43,7 +43,7 @@ make_group_impl_cond(group_x87_dd)
 make_group_impl_cond(group_x87_de)
 make_group_impl_cond(group_x87_df)
 
-make_instr_func(group_1_bv)
+make_group_impl_cond(group_1_bv)
 {
 	OPERAND rm,imm;
 	int len = 1;
