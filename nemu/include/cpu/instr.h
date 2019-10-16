@@ -25,6 +25,6 @@ extern uint8_t data_size;
 /* TODO: add more instructions here */
 
 make_instr_func(mov_i2a_l);
-
+make_instr_func(jmp_short_);
 
 #endif
