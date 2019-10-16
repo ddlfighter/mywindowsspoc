@@ -77,12 +77,12 @@ make_instr_func(mov_srm162r_l) {
         return len;
 }
 
-make_instr_func(mov_i2rm_l){
+make_instr_func(mov_i2a_l){
         int len = 1;
         OPERAND rm,imm;
 
         rm.data_size = data_size;
-     
+       
 
         imm.type = OPR_IMM;
         imm.addr = eip + len;
@@ -91,6 +91,6 @@ make_instr_func(mov_i2rm_l){
         operand_read(&imm);
         rm.val = imm.val;
         operand_write(&rm);
-        return 5;
+        return len + data_size/8;
 }
 
