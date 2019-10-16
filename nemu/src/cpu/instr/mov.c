@@ -82,7 +82,7 @@ make_instr_func(mov_i2rm_l){
         OPERAND rm,imm;
 
         rm.data_size = data_size;
-        len += modrm_rm(eip+1,&rm);
+     
 
         imm.type = OPR_IMM;
         imm.addr = eip + len;
@@ -91,7 +91,6 @@ make_instr_func(mov_i2rm_l){
         operand_read(&imm);
         rm.val = imm.val;
         operand_write(&rm);
-        printf("i love u");
-        return len + data_size/8;
+        return 5;
 }
 
