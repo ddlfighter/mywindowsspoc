@@ -54,6 +54,12 @@ make_instr_func(group_1_bv)
 	imm.addr = eip + len;
 	imm.data_size = 8;
 
+	rm.type = OPR_REG;
+	rm.addr = 0;
+	operand_read(&rm);
+	operand_read(&imm);
+
 	
+
 	return len + 1;
 }
