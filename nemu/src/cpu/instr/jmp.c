@@ -18,3 +18,16 @@ make_instr_func(jmp_near)
 
         return 1 + data_size / 8;
 }
+make_instr_func(jmp_short_)
+{
+        OPERAND rel;
+        rel.type = OPR_IMM;
+        rel.data_size = data_size;
+        rel.addr = eip + 1;
+        operand_read(&rel);
+        int offset = rel.val;
+
+        cpu.eip += offset;
+
+        return 1 + data_size/8;       
+}
