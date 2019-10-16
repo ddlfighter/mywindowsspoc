@@ -91,7 +91,7 @@ make_instr_func(mov_i2rm_l){
         operand_read(&imm);
         rm.val = imm.val;
         operand_write(&rm);
-
+        printf("i love u");
         return len + data_size/8;
 }
 
