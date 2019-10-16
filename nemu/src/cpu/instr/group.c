@@ -58,8 +58,8 @@ make_instr_func(group_1_bv)
 	rm.addr = 0;
 	operand_read(&rm);
 	operand_read(&imm);
+	alu_sub(imm,rm,data_size);
 
-	
 
 	return len + 1;
 }
