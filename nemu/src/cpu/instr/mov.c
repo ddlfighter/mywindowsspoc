@@ -82,7 +82,8 @@ make_instr_func(mov_i2a_l){
         OPERAND rm,imm;
 
         rm.data_size = data_size;
-       
+        rm.type = OPR_REG;
+        rm.addr = 0;
 
         imm.type = OPR_IMM;
         imm.addr = eip + len;
