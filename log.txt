@@ -2,3 +2,61 @@ scripts/make_emotion.sh
 make[1]: Entering directory '/home/fsq/pa2019_fall'
 scripts/validate.mk:2: fsq
 scripts/validate.mk:10: "Make Validation Pass"
+cd nemu && make
+make[2]: Entering directory '/home/fsq/pa2019_fall/nemu'
+gcc -ggdb3 -MMD -MP -Wall -Werror -O2 -I./include -I../include -I../libs -I../libs/nemu-ref/include   -c -o src/cpu/instr/group.o src/cpu/instr/group.c
+In file included from ./include/cpu/instr.h:9,
+                 from src/cpu/instr/group.c:1:
+src/cpu/instr/group.c:46:17: error: redefinition of ‘group_1_bv’
+ make_instr_func(group_1_bv)
+                 ^~~~~~~~~~
+./include/cpu/instr_helper.h:13:35: note: in definition of macro ‘make_instr_func’
+ #define make_instr_func(name) int name(uint32_t eip, uint8_t opcode)
+                                   ^~~~
+src/cpu/instr/group.c:26:22: note: previous definition of ‘group_1_bv’ was here
+ make_group_impl_cond(group_1_bv)
+                      ^~~~~~~~~~
+./include/cpu/instr_helper.h:13:35: note: in definition of macro ‘make_instr_func’
+ #define make_instr_func(name) int name(uint32_t eip, uint8_t opcode)
+                                   ^~~~
+src/cpu/instr/group.c:21:30: note: in expansion of macro ‘make_group_impl’
+ #define make_group_impl_cond make_group_impl
+                              ^~~~~~~~~~~~~~~
+src/cpu/instr/group.c:26:1: note: in expansion of macro ‘make_group_impl_cond’
+ make_group_impl_cond(group_1_bv)
+ ^~~~~~~~~~~~~~~~~~~~
+make[2]: *** [<builtin>: src/cpu/instr/group.o] Error 1
+make[2]: Leaving directory '/home/fsq/pa2019_fall/nemu'
+make[1]: *** [Makefile:28: all] Error 2
+make[1]: Leaving directory '/home/fsq/pa2019_fall'
+cat make.log
+make[1]: Entering directory '/home/fsq/pa2019_fall'
+scripts/validate.mk:2: fsq
+scripts/validate.mk:10: "Make Validation Pass"
+cd nemu && make
+make[2]: Entering directory '/home/fsq/pa2019_fall/nemu'
+gcc -ggdb3 -MMD -MP -Wall -Werror -O2 -I./include -I../include -I../libs -I../libs/nemu-ref/include   -c -o src/cpu/instr/group.o src/cpu/instr/group.c
+In file included from ./include/cpu/instr.h:9,
+                 from src/cpu/instr/group.c:1:
+src/cpu/instr/group.c:46:17: error: redefinition of ‘group_1_bv’
+ make_instr_func(group_1_bv)
+                 ^~~~~~~~~~
+./include/cpu/instr_helper.h:13:35: note: in definition of macro ‘make_instr_func’
+ #define make_instr_func(name) int name(uint32_t eip, uint8_t opcode)
+                                   ^~~~
+src/cpu/instr/group.c:26:22: note: previous definition of ‘group_1_bv’ was here
+ make_group_impl_cond(group_1_bv)
+                      ^~~~~~~~~~
+./include/cpu/instr_helper.h:13:35: note: in definition of macro ‘make_instr_func’
+ #define make_instr_func(name) int name(uint32_t eip, uint8_t opcode)
+                                   ^~~~
+src/cpu/instr/group.c:21:30: note: in expansion of macro ‘make_group_impl’
+ #define make_group_impl_cond make_group_impl
+                              ^~~~~~~~~~~~~~~
+src/cpu/instr/group.c:26:1: note: in expansion of macro ‘make_group_impl_cond’
+ make_group_impl_cond(group_1_bv)
+ ^~~~~~~~~~~~~~~~~~~~
+make[2]: *** [<builtin>: src/cpu/instr/group.o] Error 1
+make[2]: Leaving directory '/home/fsq/pa2019_fall/nemu'
+make[1]: *** [Makefile:28: all] Error 2
+make[1]: Leaving directory '/home/fsq/pa2019_fall'
