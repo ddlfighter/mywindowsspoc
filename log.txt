@@ -60,3 +60,6 @@ make[2]: *** [<builtin>: src/cpu/instr/group.o] Error 1
 make[2]: Leaving directory '/home/fsq/pa2019_fall/nemu'
 make[1]: *** [Makefile:28: all] Error 2
 make[1]: Leaving directory '/home/fsq/pa2019_fall'
+./nemu/nemu --testcase add
+NEMU load and execute img: [1m[32m./testcase/bin/add.img[0m  elf: [1m[36m./testcase/bin/add[0m
+(nemu) 
