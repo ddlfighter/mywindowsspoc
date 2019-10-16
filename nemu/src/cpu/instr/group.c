@@ -42,24 +42,3 @@ make_group_impl_cond(group_x87_dc)
 make_group_impl_cond(group_x87_dd)
 make_group_impl_cond(group_x87_de)
 make_group_impl_cond(group_x87_df)
-
-make_group_impl(group_1_bv)
-{
-	OPERAND rm,imm;
-	int len = 1;
-	rm.data_size = data_size;
-	len += modrm_rm(eip+1,&rm);
-
-	imm.type = OPR_IMM;
-	imm.addr = eip + len;
-	imm.data_size = 8;
-
-	rm.type = OPR_REG;
-	rm.addr = 0;
-	operand_read(&rm);
-	operand_read(&imm);
-	alu_sub(imm.val,rm.val,data_size);
-
-
-	return len + 1;
-}
