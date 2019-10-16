@@ -38,3 +38,17 @@ make_instr_func(cmps_b)
 	print_asm_0("cmps (%%edi), (%%esi)", "", 1);
 	return 1;
 }
+make_instr_func(cmps_bv)
+{
+	OPERAND msi, mbi;
+	msi.data_size = 8;
+	mbi.data_size = data_size;
+	msi.type = OPR_IMM;
+	mbi.type = OPR_REG;
+	msi.addr = eip + 2;
+	mbi.addr = 0;
+	operand_read(&msi);
+	operand_read(&mbi);
+	alu_sub(mbi.val,msi.val,data_size);
+	return 3;
+}
