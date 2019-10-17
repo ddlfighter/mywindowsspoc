@@ -32,4 +32,5 @@ make_instr_func(sbb_i2a_b);
 make_instr_func(push_es);
 make_instr_func(add_r2rm_v);
 make_instr_func(add_r2rm_b);
+make_instr_func(jnbe_short);
 #endif

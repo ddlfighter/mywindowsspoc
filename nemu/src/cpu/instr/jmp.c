@@ -22,12 +22,27 @@ make_instr_func(jmp_short_)
 {
         OPERAND rel;
         rel.type = OPR_IMM;
-        rel.data_size = data_size;
+        rel.data_size = 8;
         rel.addr = eip + 1;
         operand_read(&rel);
         int offset = rel.val;
 
         cpu.eip += offset;
 
-        return 1 + data_size/8;       
+        return 2;       
+}
+make_instr_func(jnbe_short)
+{
+        if(cpu.eflags.CF==0&&cpu.eflags.ZF==0)
+        {
+        OPERAND rel;
+        rel.type = OPR_IMM;
+        rel.data_size = 8;
+        rel.addr = eip + 1;
+        operand_read(&rel);
+        int offset = rel.val;
+
+        cpu.eip += offset;    
+        }
+        return 2;
 }
