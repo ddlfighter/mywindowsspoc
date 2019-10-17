@@ -96,5 +96,5 @@ make_instr_func(add_r2rm_v)
 	rm.val = alu_add(r.val,rm.val,data_size);
 	operand_write(&rm);
 
-	return 5;
+	return 4;
 }
