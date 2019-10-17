@@ -87,6 +87,8 @@ make_instr_func(sbb_i2a_b)
 make_instr_func(add_r2rm_v)
 {
 	OPERAND r,rm;
+	rm.data_size = data_size;
+	r.data_size = data_size;
 	modrm_rm(eip+1,&rm);
 	modrm_rm(eip+1,&r);
 
@@ -102,6 +104,8 @@ make_instr_func(add_r2rm_v)
 make_instr_func(add_r2rm_b)
 {
 	OPERAND r,rm;
+	r.data_size = 8;
+	rm.data_size = 8;
 	modrm_rm(eip+1,&rm);
 	modrm_rm(eip+1,&r);
 
