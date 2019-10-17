@@ -66,3 +66,20 @@ make_instr_func(div_rm2a_v)
 	operand_write(&d);
 	return len;
 }
+make_instr_func(sbb_i2a_b)
+{
+	OPERAND al, imm;
+	al.type = OPR_REG;
+	imm.type = OPR_IMM;
+	ax.addr = REG_AL;
+	imm.addr = eip + 1;
+	al.data_size = 8;
+	imm.data_size = 8;
+
+	operand_read(&imm);
+	ax.val = alu_sbb(imm.val,ax.val,8);
+	operand_write(&ax);
+
+	return 4;
+
+}
