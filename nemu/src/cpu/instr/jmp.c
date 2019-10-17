@@ -46,3 +46,18 @@ make_instr_func(jnbe_short)
         }
         return 2;
 }
+make_instr_func(jl_short)
+{
+        if(cpu.eflags.SF!=cpu.eflags.OF)
+        {
+        OPERAND rel;
+        rel.type = OPR_IMM;
+        rel.data_size = 8;
+        rel.addr = eip + 1;
+        operand_read(&rel);
+        int offset = rel.val;
+
+        cpu.eip += offset;    
+        }
+        return 2;     
+}
