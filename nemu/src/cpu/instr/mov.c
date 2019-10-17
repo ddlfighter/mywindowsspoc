@@ -104,11 +104,14 @@ make_instr_func(push_v)
         r1.data_size = data_size;
         r2.data_size = data_size;
         operand_read(&r1);
-        r1.val = r1.val - 4;
+        r2.val = r1.val - 4;
         operand_write(&r2);
 
         return 1;
 }
+make_instr_func(push_v)
+{
 
+}
 
 
