@@ -109,4 +109,19 @@ make_instr_func(push_v)
 
         return 1;
 }
+make_instr_func(push_es)
+{
+        OPERAND r1,r2;
+        r1.type = OPR_REG;
+        r2.type = OPR_SREG;
+        r1.addr = 4;
+        r1.data_size = data_size;
+        r2.addr = 0;
+        r2.data_size = 16;
 
+        operand_read(&r1);
+        r2.val = r1.val - 2;
+        operand_write(&r2);
+
+        return 1;
+}

@@ -30,4 +30,5 @@ make_instr_func(group_1_bv);
 make_instr_func(cmps_bv);
 make_instr_func(push_v);
 make_instr_func(sbb_i2a_b);
+make_instr_func(push_es);
 #endif
