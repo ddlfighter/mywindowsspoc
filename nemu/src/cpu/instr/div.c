@@ -78,7 +78,7 @@ make_instr_func(sbb_i2a_b)
 
 	operand_read(&imm);
 	al.val = alu_sbb(imm.val,al.val,8);
-	operand_write(&ax);
+	operand_write(&al);
 
 	return 4;
 
