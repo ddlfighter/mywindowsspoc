@@ -101,7 +101,8 @@ make_instr_func(push_v)
         r2.type = OPR_REG;
         r1.addr = 4;    //esp
         r2.addr = 5;    //ebp
-
+        r1.data_size = data_size;
+        r2.data_size = data_size;
         operand_read(&r1);
         r1.val = r1.val - 4;
         operand_write(&r2);
