@@ -94,6 +94,20 @@ make_instr_func(mov_i2a_l){
         operand_write(&rm);
         return len + data_size/8;
 }
+make_instr_func(push_v)
+{
+        OPERAND r1,r2;
+        r1.type = OPR_REG;
+        r2.type = OPR_REG;
+        r1.addr = 4;    //esp
+        r2.addr = 5;    //ebp
+
+        operand_read(&r1);
+        r1.val = r1.val - 4;
+        operand_write(&r2);
+
+        return 1;
+}
 
 
 
