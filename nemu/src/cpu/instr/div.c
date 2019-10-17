@@ -79,5 +79,14 @@ make_instr_func(sbb_i2a_b)
 	operand_read(&imm);
 	al.val = alu_sbb(imm.val,al.val,8);
 	operand_write(&al);
+
 	return 4;
+
+}
+
+make_instr_func(add_r2rm_v)
+{
+	OPERAND r,rm;
+	modrm_rm(eip+1,&rm);
+	modrm_rm(eip+1,&r);
 }
