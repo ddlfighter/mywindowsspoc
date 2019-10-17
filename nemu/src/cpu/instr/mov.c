@@ -87,12 +87,12 @@ make_instr_func(mov_i2a_l){
 
         imm.type = OPR_IMM;
         imm.addr = eip + len;
-        imm.data_size = data_size;
+        imm.data_size = 8;
 
         operand_read(&imm);
         rm.val = imm.val;
         operand_write(&rm);
-        return len + data_size/8;
+        return len + 1;
 }
 make_instr_func(push_v)
 {
