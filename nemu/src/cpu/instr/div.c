@@ -93,7 +93,7 @@ make_instr_func(add_r2rm_v)
 	operand_read(&rm);
 	operand_read(&r);
 
-	rm.val = alu_add(r,rm,data_size);
+	rm.val = alu_add(r.val,rm.val,data_size);
 	operand_write(&rm);
 
 	return 2;
