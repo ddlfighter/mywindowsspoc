@@ -109,9 +109,4 @@ make_instr_func(push_v)
 
         return 1;
 }
-make_instr_func(push_v)
-{
-
-}
-
 
