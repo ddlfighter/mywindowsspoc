@@ -98,3 +98,18 @@ make_instr_func(add_r2rm_v)
 
 	return 2;
 }
+
+make_instr_func(add_r2rm_b)
+{
+	OPERAND r,rm;
+	modrm_rm(eip+1,&rm);
+	modrm_rm(eip+1,&r);
+
+	operand_read(&rm);
+	operand_read(&r);
+
+	rm.val = alu_add(r.val,rm.val,data_size);
+	operand_write(&rm);
+
+	return 2;
+}
