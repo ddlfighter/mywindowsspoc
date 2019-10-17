@@ -77,7 +77,7 @@ make_instr_func(mov_srm162r_l) {
         return len;
 }
 
-make_instr_func(mov_i2a_l){
+make_instr_func(mov_i2a_b){
         int len = 1;
         OPERAND rm,imm;
 
