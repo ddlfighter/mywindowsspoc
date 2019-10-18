@@ -134,3 +134,20 @@ make_instr_func(or_i2rm_b)
 
 	return 2;
 }
+
+make_instr_func(add_i2rm_b)
+{
+	OPERAND imm,rm;
+	rm.type = OPR_REG;
+	imm.type = OPR_IMM;
+	rm.data_size = 8;
+	imm.data_size = 8;
+	rm.addr = REG_AL;
+	imm.addr = eip + 1;
+	operand_read(&rm);
+	operand_read(&imm);
+	rm.val = alu_add(imm.val,rm.val,8);
+	operand_write(&rm);
+
+	return 2;
+}
