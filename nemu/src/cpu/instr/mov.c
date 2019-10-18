@@ -99,12 +99,13 @@ make_instr_func(push_v)
         OPERAND r1,r2;
         r1.type = OPR_REG;
         r2.type = OPR_REG;
-        r1.addr = REG_ESP;    //esp
-        r2.addr = REG_EBP;    //ebp
+        REG_ESP = REG_ESP - 4;
+        r1.addr = REG_EBP;
         r1.data_size = data_size;
         r2.data_size = data_size;
         operand_read(&r1);
-        r2.val = r1.val - 4;
+        r2.val = r1.val;
+        r2.addr = REG_ESP;
         operand_write(&r2);
 
         return 1;
@@ -125,3 +126,5 @@ make_instr_func(push_es)
 
         return 1;
 }
+
+
