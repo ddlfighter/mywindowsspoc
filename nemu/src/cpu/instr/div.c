@@ -146,7 +146,7 @@ make_instr_func(add_i2r_b)
 	imm.addr = eip + 1;
 	operand_read(&r);
 	operand_read(&imm);
-	rm.val = alu_add(imm.val,r.val,8);
+	r.val = alu_add(imm.val,r.val,8);
 	operand_write(&r);
 
 	return 2;
