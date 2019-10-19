@@ -105,7 +105,7 @@ make_instr_func(push_v)
         r2.data_size = data_size;
         operand_read(&r1);
         r2.val = r1.val;
-        r2.addr = REG_ESP;
+        r2.addr = REG_ESP - 4;
         operand_write(&r2);
 
         return 1;
