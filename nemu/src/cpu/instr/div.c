@@ -153,7 +153,7 @@ make_instr_func(add_i2r_b)
 }
 make_instr_func(inc_i2r_v)
 {
-     OPREAND imm,r;
+     OPERAND imm,r;
 	 imm.type = OPR_IMM;
 	 r.type = OPR_REG;
 	 r.data_size = 32;
