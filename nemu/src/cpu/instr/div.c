@@ -151,7 +151,18 @@ make_instr_func(add_i2r_b)
 
 	return 2;
 }
-make_instr_func(inc_i2r_b)
+make_instr_func(inc_i2r_v)
 {
-     
+     OPREAND imm,r;
+	 imm.type = OPR_IMM;
+	 r.type = OPR_REG;
+	 r.data_size = 32;
+	 imm.data_size = 32;
+	 r.addr = REG_ECX;
+	 imm.val = 1;
+	 operand_read(&r);
+	 r.val = alu_sub(imm.val,r.val,32);
+	 operand_write(&r);
+	 
+	 return 1;
 }
