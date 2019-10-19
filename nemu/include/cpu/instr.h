@@ -25,7 +25,7 @@ extern uint8_t data_size;
 /* TODO: add more instructions here */
 make_instr_func(inc_i2r_v);
 make_instr_func(OUT_a2);
-make_instr_func(add_i2rm_b);
+make_instr_func(add_i2r_b);
 make_instr_func(mov_i2a_b);
 make_instr_func(jmp_short_);
 make_instr_func(cmps_bv);
