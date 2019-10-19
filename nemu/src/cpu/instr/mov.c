@@ -127,7 +127,7 @@ make_instr_func(push_es)
 
 make_instr_func(OUT_a2)
 {
-      OPREAND r1,r2;
+      OPERAND r1,r2;
       r1.type = OPR_REG;
       r2.type = OPR_REG;
       r1.data_size = 32;        //EAX
