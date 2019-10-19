@@ -125,4 +125,18 @@ make_instr_func(push_es)
         return 1;
 }
 
+make_instr_func(OUT_a2)
+{
+      OPREAND r1,r2;
+      r1.type = OPR_REG;
+      r2.type = OPR_REG;
+      r1.data_size = 32;        //EAX
+      r2.data_size = 16;        //DX
+      r1.addr = REG_EAX;
+      r2.addr = REG_DX;
+      operand_read(&r1);
+      r2.val = r1.val;
+      operand_write(&r2);
 
+      return 1;
+}
