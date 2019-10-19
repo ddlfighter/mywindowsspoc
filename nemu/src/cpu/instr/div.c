@@ -1,6 +1,6 @@
 #include "cpu/instr.h"
 
-make_instr_func(div_rm2a_b)
+make_instr_func(div_r2a_b)
 {
 	int len = 1; // in group
 	OPERAND ax, rm;
@@ -135,19 +135,23 @@ make_instr_func(or_i2rm_b)
 	return 2;
 }
 
-make_instr_func(add_i2rm_b)
+make_instr_func(add_i2r_b)
 {
-	OPERAND imm,rm;
-	rm.type = OPR_REG;
+	OPERAND imm,r;
+	r.type = OPR_REG;
 	imm.type = OPR_IMM;
-	rm.data_size = 8;
+	r.data_size = 8;
 	imm.data_size = 8;
-	rm.addr = REG_AL;
+	r.addr = REG_AL;
 	imm.addr = eip + 1;
-	operand_read(&rm);
+	operand_read(&r);
 	operand_read(&imm);
-	rm.val = alu_add(imm.val,rm.val,8);
-	operand_write(&rm);
+	rm.val = alu_add(imm.val,r.val,8);
+	operand_write(&r);
 
 	return 2;
+}
+make_instr_func(inc_i2r_b)
+{
+     
 }
