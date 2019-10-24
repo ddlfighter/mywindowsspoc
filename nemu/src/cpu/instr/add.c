@@ -1,4 +1,4 @@
-#include "pa2019_fall/nemu/src/cpu/instr.h"
+#include "cpu/instr.h"
 
 /*add*/
 
