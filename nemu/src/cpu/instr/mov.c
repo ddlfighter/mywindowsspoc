@@ -94,22 +94,7 @@ make_instr_func(mov_i2a_b){
         operand_write(&rm);
         return len + 1;
 }
-make_instr_func(push_v)
-{
-        cpu.esp -= 4;
-        OPERAND r1,r2;
-        r1.type = OPR_REG;
-        r2.type = OPR_REG;
-        r1.addr = REG_EBP;
-        r1.data_size = data_size;
-        r2.data_size = data_size;
-        operand_read(&r1);
-        r2.val = r1.val;
-        r2.addr = REG_ESP;
-        operand_write(&r2);
 
-        return 1;
-}
 make_instr_func(push_es)
 {
         OPERAND r1,r2;
