@@ -98,7 +98,7 @@ make_instr_func(inc_i2r_v)
 	 r.addr = REG_ECX;
 	 imm.val = 1;
 	 operand_read(&r);
-	 r.val = alu_sub(imm.val,r.val,32);
+	 r.val = alu_add(imm.val,r.val,32);
 	 operand_write(&r);
 	 
 	 return 1;
