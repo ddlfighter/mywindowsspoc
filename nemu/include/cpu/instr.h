@@ -36,7 +36,6 @@ make_instr_func(OUT_a2);
 make_instr_func(mov_i2a_b);
 make_instr_func(jmp_short_);
 make_instr_func(cmps_bv);
-make_instr_func(push_v);
 make_instr_func(sbb_i2a_b);
 make_instr_func(push_es);
 make_instr_func(jnbe_short);
