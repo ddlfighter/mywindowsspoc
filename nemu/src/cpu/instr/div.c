@@ -84,73 +84,10 @@ make_instr_func(sbb_i2a_b)
 
 }
 
-make_instr_func(add_r2rm_v)
-{
-	OPERAND r,rm;
-	rm.data_size = data_size;
-	r.data_size = data_size;
-	modrm_rm(eip+1,&rm);
-	modrm_rm(eip+1,&r);
 
-	operand_read(&rm);
-	operand_read(&r);
 
-	rm.val = alu_add(r.val,rm.val,data_size);
-	operand_write(&rm);
 
-	return 2;
-}
 
-make_instr_func(add_r2rm_b)
-{
-	OPERAND r,rm;
-	r.data_size = 8;
-	rm.data_size = 8;
-	modrm_rm(eip+1,&rm);
-	modrm_rm(eip+1,&r);
-
-	operand_read(&rm);
-	operand_read(&r);
-
-	rm.val = alu_add(r.val,rm.val,8);
-	operand_write(&rm);
-
-	return 2;
-}
-
-make_instr_func(or_i2rm_b)
-{
-	OPERAND imm,rm;
-	rm.type = OPR_REG;
-	imm.type = OPR_IMM;
-	rm.data_size = 8;
-	imm.data_size = 8;
-	rm.addr = REG_AL;
-	imm.addr = eip + 1;
-	operand_read(&rm);
-	operand_read(&imm);
-	rm.val = alu_or(imm.val,rm.val,8);
-	operand_write(&rm);
-
-	return 2;
-}
-
-make_instr_func(add_i2r_b)
-{
-	OPERAND imm,r;
-	r.type = OPR_REG;
-	imm.type = OPR_IMM;
-	r.data_size = 8;
-	imm.data_size = 8;
-	r.addr = REG_AL;
-	imm.addr = eip + 1;
-	operand_read(&r);
-	operand_read(&imm);
-	r.val = alu_add(imm.val,r.val,8);
-	operand_write(&r);
-
-	return 2;
-}
 make_instr_func(inc_i2r_v)
 {
      OPERAND imm,r;
