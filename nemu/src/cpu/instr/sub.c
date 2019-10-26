@@ -11,5 +11,5 @@ static void instr_execute_2op()
 	operand_write(&opr_dest);
 }
 
-make_instr_impl_2op(sub,i,r,bv);
+make_instr_impl_2op(sub,i,rm,bv);
 make_instr_impl_2op(sub,i,rm,v);
