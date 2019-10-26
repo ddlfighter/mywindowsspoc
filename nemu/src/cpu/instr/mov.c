@@ -64,7 +64,7 @@ make_instr_func(mov_srm82r_v) {
         return len;
 }
 
-make_instr_func(lea_m2r_v){
+/* make_instr_func(lea_m2r_v){
      int len = 1;
      OPERAND m,r;
 
@@ -81,6 +81,7 @@ make_instr_func(lea_m2r_v){
      
      return len +1;
 }
+*/
 
 make_instr_func(mov_srm162r_l) {
         int len = 1;
