@@ -65,21 +65,13 @@ make_instr_func(mov_srm82r_v) {
 }
 
  make_instr_func(lea){
-     int len = 1;
-     OPERAND m,r;
-
-     r.data_size = data_size;
-     m.data_size = data_size;
-     len += modrm_rm(eip+1,&r);
-
-     m.type = OPR_MEM;
-     m.addr = eip + len;
-     m.data_size = data_size;
-
-     r.val = m.addr;
-     operand_write(&r);
-     
-     return len +1;
+         OPREAND r, rm;
+         r.data_size = data_size;
+         int len = 1;
+         len += modrm_r_rm(eip+1,&r,&rm);
+         r.val = rm.addr;
+         operand_write(&r);
+         return len;
 }
 
 make_instr_func(mov_srm162r_l) {
