@@ -25,6 +25,7 @@ static void instr_execute_1op_cc_fail() {/* Do nothing */}
 	make_instr_impl_1op_cc(j, i, suffix, no) \
 	make_instr_impl_1op_cc(j, i, suffix, np) \
 	make_instr_impl_1op_cc(j, i, suffix, ns) \
+	nake_instr_impl_1op_cc(j, i, suffix, nb) \
 
 jcc_helper(near)
 jcc_helper(short_)
