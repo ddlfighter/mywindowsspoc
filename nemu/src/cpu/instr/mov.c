@@ -70,14 +70,14 @@ make_instr_func(mov_srm82r_v) {
 
      r.data_size = data_size;
      m.data_size = data_size;
-     len += modrm_rm(eip+1,&rm);
+     len += modrm_rm(eip+1,&r);
 
      m.type = OPR_MEM;
      m.addr = eip + len;
      m.data_size = data_size;
 
      r.val = m.addr;
-     operand_write(&rm);
+     operand_write(&r);
      
      return len +1;
 }
