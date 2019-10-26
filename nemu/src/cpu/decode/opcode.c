@@ -1,5 +1,5 @@
 #include "cpu/instr.h"
-/*
+
 instr_func opcode_entry[256] = {
     /* 0x00 - 0x03*/ add_r2rm_b,add_r2rm_v, inv, inv,
     /* 0x04 - 0x07*/ inv, inv, inv, inv,
@@ -66,7 +66,7 @@ instr_func opcode_entry[256] = {
     /* 0xf8 - 0xfb*/ clc, inv, inv, inv,
     /* 0xfc - 0xff*/ cld, inv, inv, group_5_indirect,
 };
-*/
+
 /* 0x80 */
 instr_func group_1_b_entry[8] =
     {inv, inv, inv, inv, inv, inv, inv, inv};
