@@ -34,7 +34,7 @@ extern uint8_t data_size;
 #include "cpu/instr/jcc.h"
 
 /* TODO: add more instructions here */
-make_instr_func(lea_m2r_v);
+ make_instr_func(lea);
 make_instr_func(inc_rm_v);
 make_instr_func(dec_rm_v);
 make_instr_func(OUT_a2);
