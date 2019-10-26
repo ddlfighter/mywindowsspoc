@@ -203,7 +203,7 @@ static inline bool inv_cc();
 	cpu.eflags.PF == 0
 
 #define condition_nb \
-	cpu.eflags.CF == 1
+	cpu.eflags.CF == 0
 
 #define condition_ns \
 	cpu.eflags.SF == 0
