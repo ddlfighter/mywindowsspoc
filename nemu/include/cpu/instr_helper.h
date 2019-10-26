@@ -193,9 +193,9 @@ static inline bool inv_cc();
 #define condition_ne \
 	cpu.eflags.ZF == 0
 
-#define condition_nb
+#define condition_nb \
 	cpu.eflags.CF == 0
-	
+
 #define condition_na \
 	cpu.eflags.CF == 1 || cpu.eflags.ZF == 1
 
