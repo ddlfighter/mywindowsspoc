@@ -12,5 +12,5 @@ static void instr_execute_2op()
 }
 
 make_instr_impl_2op(sbb,i,rm,bv);
-make_instr_impl_2op(sbb,i,r,b);
+make_instr_impl_2op(sbb,i,a,b);
 make_instr_impl_2op(sbb,i,rm,v);
