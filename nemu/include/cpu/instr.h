@@ -45,7 +45,6 @@ make_instr_func(cmps_bv);
 make_instr_func(sbb_i2a_b);
 make_instr_func(push_es);
 make_instr_func(jnbe_short);
-make_instr_func(jl_short);
 make_instr_func(or_i2rm_b);
 make_instr_func(ret_near);
 #endif
