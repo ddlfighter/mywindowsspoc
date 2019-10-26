@@ -3,5 +3,6 @@
 
 make_instr_func(jl_short_);
 make_instr_func(jnp_short_);
+make_instr_func(jnb_short_);
 
 #endif
