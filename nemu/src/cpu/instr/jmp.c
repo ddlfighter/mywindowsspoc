@@ -25,7 +25,7 @@ make_instr_func(jmp_near_indirect)
         rm.data_size = data_size;
         len += modrm_rm(eip+1, &rm);
 
-        operand_read(&rel);
+        operand_read(&rm);
 
         int offset = sign_ext(rm.val, data_size);
 
