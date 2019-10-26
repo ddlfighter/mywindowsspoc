@@ -65,7 +65,7 @@ make_instr_func(mov_srm82r_v) {
 }
 
  make_instr_func(lea){
-         OPREAND r, rm;
+         OPERAND r, rm;
          r.data_size = data_size;
          int len = 1;
          len += modrm_r_rm(eip+1,&r,&rm);
