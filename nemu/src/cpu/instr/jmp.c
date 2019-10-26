@@ -21,13 +21,13 @@ make_instr_func(jmp_near)
 make_instr_func(jmp_near_indirect)
 {
         int len = 1;
-        OPERAND rel;
-        rel.data_size = data_size;
+        OPERAND rm;
+        rm.data_size = data_size;
         len += modrm_rm(eip+1, &rm);
 
         operand_read(&rel);
 
-        int offset = sign_ext(rel.val, data_size);
+        int offset = sign_ext(rm.val, data_size);
 
         cpu.eip += offset;
 
