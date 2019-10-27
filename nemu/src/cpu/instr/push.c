@@ -2,18 +2,13 @@
 
 static void instr_execute_1op()
 {
-    if(opr_src.data_size==16){
-        cpu.esp -= 2;
-    }
-    else{
-        cpu.esp -= 4;
-    }
-    OPERAND temp;
     operand_read(&opr_src);
-    temp.data_size = 32;
-    temp.val = sign_ext(opr_src.val,opr_src.data_size);
+    cpu.esp -= 4;
+    OPERAND temp;
+    temp.type = OPR_MEM;
     temp.addr = cpu.esp;
-    temp.addr = OPR_MEM;
+    temp.data_size = data_size;
+    temp.val = opr_src.val;
     operand_write(&temp);
 
 }
