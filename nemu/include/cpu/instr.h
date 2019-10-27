@@ -69,5 +69,5 @@ make_instr_func(imul_rm2a_b);
 make_instr_func(div_rm2a_b);
 make_instr_func(idiv_rm2a_b);
 
-
+make_instr_func(ret_near_imm16);
 #endif
