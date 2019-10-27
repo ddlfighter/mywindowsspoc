@@ -1,6 +1,6 @@
 #include "cpu/instr.h"
 
-make_instr_func(div_r2a_b)
+make_instr_func(div_rm2a_b)
 {
 	int len = 1; // in group
 	OPERAND ax, rm;
