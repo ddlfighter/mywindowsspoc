@@ -33,6 +33,7 @@ extern uint8_t data_size;
 #include "cpu/instr/call.h"
 #include "cpu/instr/dec.h"
 #include "cpu/instr/jcc.h"
+#include "cpu/instr/set.h"
 
 /* TODO: add more instructions here */
 make_instr_func(pop_r_v);
