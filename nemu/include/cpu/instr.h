@@ -49,6 +49,7 @@ make_instr_func(push_es);
 make_instr_func(jnbe_short);
 make_instr_func(or_i2rm_b);
 make_instr_func(ret_near);
+
 make_instr_func(test_i2rm_v);
 make_instr_func(not_rm_v);
 make_instr_func(neg_rm_v);
@@ -58,12 +59,5 @@ make_instr_func(div_rm2a_v);
 make_instr_func(idiv_rm2a_v);
 make_instr_func(imul_rm2a_v);
 
-make_instr_func(test_i2rm_b);
-make_instr_func(not_rm_b);
-make_instr_func(neg_rm_b);
-make_instr_func(mul_rm2a_b);
-make_instr_func(imul_rm2a_b);
-make_instr_func(div_rm2a_b);
-make_instr_func(idiv_rm2a_b);
-make_instr_func(imul_rm2a_b);
+
 #endif
