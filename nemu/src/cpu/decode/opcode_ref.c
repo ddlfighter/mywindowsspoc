@@ -1,6 +1,6 @@
 #include "cpu/instr.h"
 
-instr_func __ref_opcode_entry[256] = {
+instr_func opcode_entry[256] = {
     /* 0x00 - 0x03*/ __ref_add_r2rm_b, __ref_add_r2rm_v, __ref_add_rm2r_b, __ref_add_rm2r_v,
     /* 0x04 - 0x07*/ __ref_add_i2a_b, __ref_add_i2a_v, inv, inv,
     /* 0x08 - 0x0b*/ __ref_or_r2rm_b, __ref_or_r2rm_v, __ref_or_rm2r_b, __ref_or_rm2r_v,
@@ -21,7 +21,7 @@ instr_func __ref_opcode_entry[256] = {
     /* 0x44 - 0x47*/ __ref_inc_r_v, __ref_inc_r_v, __ref_inc_r_v, __ref_inc_r_v,
     /* 0x48 - 0x4b*/ __ref_dec_r_v, __ref_dec_r_v, __ref_dec_r_v, __ref_dec_r_v,
     /* 0x4c - 0x4f*/ __ref_dec_r_v, __ref_dec_r_v, __ref_dec_r_v, __ref_dec_r_v,
-    /* 0x50 - 0x53*/ push_r_v, push_r_v, push_r_v, push_r_v,
+     /* 0x50 - 0x53*/ push_r_v, push_r_v, push_r_v, push_r_v,
     /* 0x54 - 0x57*/ inv, push_r_v, push_r_v, push_r_v,
     /* 0x58 - 0x5b*/ inv, inv, inv, pop_r_v,
     /* 0x5c - 0x5f*/ inv, pop_r_v, inv, inv,
