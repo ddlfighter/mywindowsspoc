@@ -9,5 +9,6 @@ make_instr_func(add_rm2r_v);
 make_instr_func(add_i2rm_v);
 make_instr_func(add_i2a_v);
 make_instr_func(add_i2rm_b);
+make_instr_func(add_rm2r_b);
 
 #endif
