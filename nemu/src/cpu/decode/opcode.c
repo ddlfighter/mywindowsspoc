@@ -1,7 +1,7 @@
 #include "cpu/instr.h"
 
 instr_func opcode_entry[256] = {
-    /* 0x00 - 0x03*/ add_r2rm_b,add_r2rm_v, add_rm2r_b, add_rm2r_v,
+    /* 0x00 - 0x03*/ add_r2rm_b,add_r2rm_v, inv, inv,
     /* 0x04 - 0x07*/ inv, add_i2a_v, inv, inv,
     /* 0x08 - 0x0b*/ inv, or_r2rm_v, or_rm2r_b, inv,
     /* 0x0c - 0x0f*/ or_i2a_b, inv, inv, opcode_2_byte,
@@ -14,7 +14,7 @@ instr_func opcode_entry[256] = {
     /* 0x28 - 0x2b*/ inv, sub_r2rm_v, inv, sub_rm2r_v,
     /* 0x2c - 0x2f*/ inv, inv, inv, inv,
     /* 0x30 - 0x33*/ inv, xor_r2rm_v, inv, inv,
-    /* 0x34 - 0x37*/ xor_i2a_b, inv, inv, inv,
+    /* 0x34 - 0x37*/ inv, inv, inv, inv,
     /* 0x38 - 0x3b*/ inv, __ref_cmp_r2rm_v, inv, __ref_cmp_rm2r_v,
     /* 0x3c - 0x3f*/ __ref_cmp_i2a_b, inv, inv, inv,
     /* 0x40 - 0x43*/ inc_r_v, inv, inc_r_v, inv,
@@ -24,7 +24,7 @@ instr_func opcode_entry[256] = {
     /* 0x50 - 0x53*/ push_r_v, push_r_v, push_r_v, push_r_v,
     /* 0x54 - 0x57*/ inv, push_r_v, push_r_v, push_r_v,
     /* 0x58 - 0x5b*/ inv, inv, inv, pop_r_v,
-    /* 0x5c - 0x5f*/ inv, pop_r_v, pop_r_v, pop_r_v,
+    /* 0x5c - 0x5f*/ inv, pop_r_v, pop_r_v, inv,
     /* 0x60 - 0x63*/ inv, inv, inv, inv,
     /* 0x64 - 0x67*/ inv, inv, data_size_16, inv,
     /* 0x68 - 0x6b*/ inv, inv, push_i_b, inv,
@@ -49,7 +49,7 @@ instr_func opcode_entry[256] = {
     /* 0xb4 - 0xb7*/ mov_i2r_b, mov_i2r_b, mov_i2r_b, mov_i2r_b,
     /* 0xb8 - 0xbb*/ mov_i2r_v, mov_i2r_v, mov_i2r_v, mov_i2r_v,
     /* 0xbc - 0xbf*/ mov_i2r_v, mov_i2r_v, mov_i2r_v, mov_i2r_v,
-    /* 0xc0 - 0xc3*/ group_2_b, group_2_v, ret_near_imm16, ret_near,
+    /* 0xc0 - 0xc3*/ group_2_b, group_2_v, inv, ret_near,
     /* 0xc4 - 0xc7*/ inv, inv, mov_i2rm_b, mov_i2rm_v,
     /* 0xc8 - 0xcb*/ inv, __ref_leave, inv, inv,
     /* 0xcc - 0xcf*/ inv, inv, inv, inv,
