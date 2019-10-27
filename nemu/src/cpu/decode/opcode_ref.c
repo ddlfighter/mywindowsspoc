@@ -1,6 +1,6 @@
 #include "cpu/instr.h"
 
-instr_func opcode_entry[256] = {
+instr_func __ref_opcode_entry[256] = {
     /* 0x00 - 0x03*/ __ref_add_r2rm_b, __ref_add_r2rm_v, __ref_add_rm2r_b, __ref_add_rm2r_v,
     /* 0x04 - 0x07*/ __ref_add_i2a_b, __ref_add_i2a_v, inv, inv,
     /* 0x08 - 0x0b*/ __ref_or_r2rm_b, __ref_or_r2rm_v, __ref_or_rm2r_b, __ref_or_rm2r_v,
@@ -43,7 +43,7 @@ instr_func opcode_entry[256] = {
     /* 0x9c - 0x9f*/ inv, inv, __ref_sahf, inv,
     /* 0xa0 - 0xa3*/ __ref_mov_o2a_b, __ref_mov_o2a_v, __ref_mov_a2o_b, __ref_mov_a2o_v,
     /* 0xa4 - 0xa7*/ __ref_movs_b, __ref_movs_v, __ref_cmps_b, __ref_cmps_v,
-    /* 0xa8 - 0xab*/ inv, __ref_test_i2a_v, inv, inv,
+    /* 0xa8 - 0xab*/ __ref_test_i2a_b, __ref_test_i2a_v, __ref_stos_b, __ref_stos_v,
     /* 0xac - 0xaf*/ inv, inv, inv, inv,
     /* 0xb0 - 0xb3*/ __ref_mov_i2r_b, __ref_mov_i2r_b, __ref_mov_i2r_b, __ref_mov_i2r_b,
     /* 0xb4 - 0xb7*/ __ref_mov_i2r_b, __ref_mov_i2r_b, __ref_mov_i2r_b, __ref_mov_i2r_b,
