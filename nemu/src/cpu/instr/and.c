@@ -14,4 +14,5 @@ static void instr_execute_2op()
 make_instr_impl_2op(and,i,rm,bv);
 make_instr_impl_2op(and,i,rm,v);
 make_instr_impl_2op(test,r,rm,v);
+make_instr_impl_2op(test,r,rm,b);
 make_instr_impl_2op(and,rm,r,b);
