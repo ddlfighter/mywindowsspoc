@@ -1,8 +1,8 @@
 #include "cpu/instr.h"
 
 instr_func opcode_entry[256] = {
-    /* 0x00 - 0x03*/ add_r2rm_b,add_r2rm_v, inv, inv,
-    /* 0x04 - 0x07*/ inv, add_i2a_v, inv, inv,
+    /* 0x00 - 0x03*/ __ref_add_r2rm_b,__ref_add_r2rm_v, inv, inv,
+    /* 0x04 - 0x07*/ inv, __ref_add_i2a_v, inv, inv,
     /* 0x08 - 0x0b*/ inv, or_r2rm_v, inv, inv,
     /* 0x0c - 0x0f*/ or_i2a_b, inv, inv, opcode_2_byte,
     /* 0x10 - 0x13*/ inv, adc_r2rm_v, inv, inv,
@@ -11,7 +11,7 @@ instr_func opcode_entry[256] = {
     /* 0x1c - 0x1f*/ sbb_i2a_b, inv, inv, inv,
     /* 0x20 - 0x23*/ inv, inv, inv, inv,
     /* 0x24 - 0x27*/ inv, inv, inv, inv,
-    /* 0x28 - 0x2b*/ inv, inv, inv, sub_rm2r_v,
+    /* 0x28 - 0x2b*/ inv, inv, inv, __ref_sub_rm2r_v,
     /* 0x2c - 0x2f*/ inv, inv, inv, inv,
     /* 0x30 - 0x33*/ inv, xor_r2rm_v, inv, inv,
     /* 0x34 - 0x37*/ inv, inv, inv, inv,
