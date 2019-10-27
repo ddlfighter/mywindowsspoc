@@ -18,11 +18,11 @@ make_instr_func(ret_near){
 make_instr_func(ret_near_imm16){
     OPERAND imm;
     imm.type = OPR_IMM;
-    r.addr = eip + 1;
-    r.data_size = 16;
+    imm.addr = eip + 1;
+    imm.data_size = 16;
     operand_read(&imm);
     //printf("%x\n",r.addr);
-    cpu.eip = r.val;
+    cpu.eip = imm.val;
     cpu.esp += 2;
 
     return 0;
