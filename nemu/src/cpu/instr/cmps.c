@@ -9,7 +9,7 @@ make_instr_func(cmps_v)
 	msi.addr = cpu.gpr[REG_ESI]._32;
 	mdi.addr = cpu.gpr[REG_EDI]._32;
 	operand_read(&msi);
-	operand_read(&mdi);
+	operand_read(&mdi);	
 	alu_sub(mdi.val, msi.val, data_size);
 	int incDec = 0;
 	incDec = cpu.eflags.DF == 0 ? data_size / 8 : -data_size / 8;
