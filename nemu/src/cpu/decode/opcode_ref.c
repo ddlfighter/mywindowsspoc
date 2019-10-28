@@ -112,7 +112,7 @@ instr_func __ref_group_3_v_entry[8] =
     {__ref_test_i2rm_v, inv, __ref_not_rm_v, __ref_neg_rm_v, __ref_mul_rm2a_v, __ref_imul_rm2a_v, __ref_div_rm2a_v, __ref_idiv_rm2a_v};
 
 /* 0xff */
-instr_func group_5_indirect_entry[8] =
+instr_func __ref_group_5_indirect_entry[8] =
     {__ref_inc_rm_v, __ref_dec_rm_v, __ref_call_near_indirect, inv, __ref_jmp_near_indirect, inv, __ref_push_rm_v, inv};
 
 instr_func __ref_group_7_entry[8] =
@@ -154,7 +154,7 @@ instr_func __ref_group_x87_df_entry[8] =
 // instr_func group_5_indirect_entry[8] =
 // {inv, inv, inv, inv, inv, inv, inv, inv};
 
-instr_func opcode_2_byte_entry[256] = {
+instr_func __ref_opcode_2_byte_entry[256] = {
     /* 0x00 - 0x03*/ inv, group_7, inv, inv,
     /* 0x04 - 0x07*/ inv, inv, inv, inv,
     /* 0x08 - 0x0b*/ inv, inv, inv, inv,
