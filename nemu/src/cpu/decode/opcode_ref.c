@@ -1,6 +1,6 @@
 #include "cpu/instr.h"
 
-instr_func opcode_entry[256] = {
+instr_func __ref_opcode_entry[256] = {
     /* 0x00 - 0x03*/ __ref_add_r2rm_b, __ref_add_r2rm_v, __ref_add_rm2r_b, __ref_add_rm2r_v,
     /* 0x04 - 0x07*/ __ref_add_i2a_b, __ref_add_i2a_v, inv, inv,
     /* 0x08 - 0x0b*/ __ref_or_r2rm_b, __ref_or_r2rm_v, __ref_or_rm2r_b, __ref_or_rm2r_v,
@@ -59,7 +59,7 @@ instr_func opcode_entry[256] = {
     /* 0xdc - 0xdf*/ group_x87_dc, group_x87_dd, group_x87_de, group_x87_df,
     /* 0xe0 - 0xe3*/ inv, inv, inv, __ref_jecxz_short_,
     /* 0xe4 - 0xe7*/ inv, inv, inv, inv,
-    /* 0xe8 - 0xeb*/ __ref_call_near, __ref_jmp_near, __ref_jmp_far_imm, jmp_short_,
+    /* 0xe8 - 0xeb*/ __ref_call_near, __ref_jmp_near, __ref_jmp_far_imm, __ref_jmp_short,
     /* 0xec - 0xef*/ __ref_in_b, __ref_in_v, __ref_out_b, __ref_out_v,
     /* 0xf0 - 0xf3*/ inv, break_point, inv, __ref_rep_repe,
     /* 0xf4 - 0xf7*/ __ref_hlt, inv, group_3_b, group_3_v,
