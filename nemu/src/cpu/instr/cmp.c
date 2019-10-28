@@ -12,7 +12,7 @@ static void instr_execute_2op()
 		if(x==1)opr_src.val = opr_src.val | 0xffffff00;
 	}
 	alu_sub(opr_src.val,opr_dest.val,opr_dest.data_size);
-	printf("\n%d\n",cpu.eflags.ZF);
+	//printf("\n%d\n",cpu.eflags.ZF);
 }
 
  
