@@ -11,9 +11,16 @@ static void instr_execute_2op()
 		x = opr_src.val >> 7;
 		if(x==1)opr_src.val = opr_src.val | 0xffffff00;
 	}
+	else
+	{
+		   opr_src.val = sign_ext(opr_src.val&(0xFFFFFFFF>>(32-opr_dest.data_size)),opr_dest.data_size);
+	}
 	alu_sub(opr_src.val,opr_dest.val,opr_dest.data_size);
 }
 
+ 
+	opr_dest.val = alu_and(opr_src.val, opr_dest.val, opr_dest.data_size);
+	operand_write(&opr_dest);
 make_instr_impl_2op(cmp,i,rm,bv);
 make_instr_impl_2op(cmp,i,rm,b);
 make_instr_impl_2op(cmp,i,rm,v);
