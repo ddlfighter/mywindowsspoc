@@ -7,6 +7,9 @@ static void instr_execute_1op()
     else
         cpu.eflags.CF = 1;
     opr_dest.val = ~opr_dest.val + 1;
+    Set_PF(opr_dest.val,opr.data_size);
+    Set_SF(opr_dest.val,opr.data_size);
+    Set_ZF(opr_dest.val,opr.data_size);
 	operand_write(&opr_dest);
     
 }
