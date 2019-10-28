@@ -6,11 +6,11 @@ static void instr_execute_2op()
 {
 	operand_read(&opr_src);
 	operand_read(&opr_dest);
-	if(opr_src.data_size==8&&opr_dest.data_size==data_size){
+/* 	if(opr_src.data_size==8&&opr_dest.data_size==data_size){
 		int x;
 		x = opr_src.val >> 7;
 		if(x==1)opr_src.val = opr_src.val | 0xffffff00;
-	}
+	}*/
 	alu_sub(opr_src.val,opr_dest.val,opr_dest.data_size);
 }
 
