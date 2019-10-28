@@ -27,4 +27,12 @@ make_instr_impl_2op(cmp,i,a,b);
 make_instr_impl_2op(cmp,i,a,v);
 
 
+make_instr_func(cmp_rm2r_v){
+	OPERAND r,rm;
+	int len = 1;
+	len += modrm_r_rm(eip+1,&r,&rm);
+	operand_read(&r);
+	operand_read(&rm);
+	alu_sub(opr_src.val,opr_dest.val,opr_dest.data_size);
 
+}
