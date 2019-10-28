@@ -1,6 +1,6 @@
 #include "cpu/instr.h"
 
-instr_func __ref_opcode_entry[256] = {
+instr_func opcode_entry[256] = {
     /* 0x00 - 0x03*/ add_r2rm_b,add_r2rm_v, inv, inv,
     /* 0x04 - 0x07*/ inv, add_i2a_v, inv, inv,
     /* 0x08 - 0x0b*/ inv, or_r2rm_v, or_rm2r_b, inv,
@@ -43,7 +43,7 @@ instr_func __ref_opcode_entry[256] = {
     /* 0x9c - 0x9f*/ inv, inv, sahf, inv,
     /* 0xa0 - 0xa3*/ mov_o2a_b, mov_o2a_v, mov_a2o_b, mov_a2o_v,
     /* 0xa4 - 0xa7*/ movs_b, movs_v, inv, inv,
-    /* 0xa8 - 0xab*/ test_i2a_b, test_i2a_v, inv, inv,
+    /* 0xa8 - 0xab*/ __ref_test_i2a_b, __ref_test_i2a_v, inv, inv,
     /* 0xac - 0xaf*/ inv, inv, inv, inv,
     /* 0xb0 - 0xb3*/ mov_i2r_b, mov_i2r_b, mov_i2r_b, mov_i2r_b,
     /* 0xb4 - 0xb7*/ mov_i2r_b, mov_i2r_b, mov_i2r_b, mov_i2r_b,
