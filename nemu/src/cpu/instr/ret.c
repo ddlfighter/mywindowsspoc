@@ -16,16 +16,23 @@ make_instr_func(ret_near){
 }
 
 make_instr_func(ret_near_imm16){
+    OPERAND m;
+    imm.type = OPR_MEM;
+    imm.addr = cpu.esp;
+    imm.data_size = data_size;
+    operand_read(&m);
+    //printf("%x\n",imm.addr);
+    cpu.eip = m.val;
+    cpu.esp += opr_src.data_size/8;
+
     OPERAND imm;
     imm.type = OPR_IMM;
-    imm.addr = eip + 1;
     imm.data_size = 16;
+    imm.addr = eip + 1;
     operand_read(&imm);
-    //printf("%x\n",imm.addr);
-    cpu.eip = imm.val;
-    cpu.esp += 4;
+    cpu.esp += sign_ext(imm.val, 16);
+
+    print_asm_1("ret","",1+ imm.data_size/8,&imm);
 
     return 0;
-
-
 }
