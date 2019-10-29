@@ -36,3 +36,17 @@ make_instr_func(ret_near_imm16){
 
     return 0;
 }
+
+make_instr_func(leave){
+    cpu.esp = cpu.ebp;
+    OPERAND m;
+    m.type = OPR_MEM;
+    m.data_size = data_size;
+    m.addr = cpu.esp;
+    operand_read(&m);
+    cpu.ebp = m.val;
+    cpu.esp += data_size/8;
+    print_asm_0("leave","",1);
+
+    return 1;
+}

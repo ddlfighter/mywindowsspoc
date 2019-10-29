@@ -36,6 +36,7 @@ extern uint8_t data_size;
 #include "cpu/instr/set.h"
 
 /* TODO: add more instructions here */
+make_instr_func(leave);
 make_instr_func(cmps_b);
 make_instr_func(cmps_v);
 make_instr_func(stos_b);
