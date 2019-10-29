@@ -21,9 +21,9 @@ make_instr_func(ret_near_imm16){
     imm.addr = eip + 1;
     imm.data_size = 16;
     operand_read(&imm);
-    //printf("%x\n",r.addr);
+    //printf("%x\n",imm.addr);
     cpu.eip = imm.val;
-    cpu.esp += 2;
+    cpu.esp += 4;
 
     return 0;
 
