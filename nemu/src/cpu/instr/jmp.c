@@ -38,12 +38,16 @@ make_instr_func(jmp_short_)
 {
         OPERAND rel;
         rel.type = OPR_IMM;
+        rel.sreg = SREG_CS;
         rel.data_size = 8;
         rel.addr = eip + 1;
+
         operand_read(&rel);
-        int offset = rel.val;
+
+        int offset = sign_ext(rel.val,rel.data_size);
+        print("jmp","",1+rel.data_size/8,&rel);
 
         cpu.eip += offset;
 
-        return 2;       
+        return 1+rel.data_size/8;       
 }
