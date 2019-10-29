@@ -15,7 +15,6 @@ static void instr_execute_1op()
 	else
 		cpu.eflags.ZF = 0;
     cpu.eflags.SF = sign(res);
-
 	operand_write(&opr_dest);
     
 }
