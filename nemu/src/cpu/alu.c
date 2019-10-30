@@ -142,8 +142,11 @@ void Set_OF_sub(uint32_t src,uint32_t dest,uint32_t result,size_t data_size)
 			cpu.eflags.OF = 1;
 		else
 			cpu.eflags.OF = 0;
-		
-	}
+			}
+		else
+		{
+			cpu.eflags.OF = 0;
+		}
 }
 
 uint32_t alu_add(uint32_t src, uint32_t dest, size_t data_size)
