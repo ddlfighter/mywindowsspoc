@@ -192,7 +192,7 @@ uint32_t alu_sub(uint32_t src, uint32_t dest, size_t data_size)
 	Set_ZF(res,data_size);
 	Set_SF(res,data_size);
 	Set_CF_sub(dest,src,data_size);
-	Set_OF_sub(src,dest,res,data_size);
+	Set_OF_sub(res,src,dest,res,data_size);
 	return (res&(0xffffffff>>(32-data_size)));
 #endif
 }
