@@ -1,6 +1,6 @@
 #include "cpu/instr.h"
 
-instr_func __ref_opcode_entry[256] = {
+instr_func opcode_entry[256] = {
     /* 0x00 - 0x03*/ add_r2rm_b,add_r2rm_v, add_rm2r_b, add_rm2r_v,
     /* 0x04 - 0x07*/ inv, add_i2a_v, inv, inv,
     /* 0x08 - 0x0b*/ inv, or_r2rm_v, or_rm2r_b, inv,
@@ -68,15 +68,15 @@ instr_func __ref_opcode_entry[256] = {
 };
 
 /* 0x80 */
-instr_func __ref_group_1_b_entry[8] =
+instr_func group_1_b_entry[8] =
     {add_i2rm_b, or_i2rm_b, adc_i2rm_b, sbb_i2rm_b, and_i2rm_b, sub_i2rm_b, xor_i2rm_b,  cmp_i2rm_b};
 
 /* 0x81 */
-instr_func __ref_group_1_v_entry[8] =
+instr_func group_1_v_entry[8] =
     {add_i2rm_v, or_i2rm_v, adc_i2rm_v, sbb_i2rm_v, and_i2rm_v, sub_i2rm_v, xor_i2rm_v,  cmp_i2rm_v};
 
 /* 0x83 */
-instr_func __ref_group_1_bv_entry[8] =
+instr_func group_1_bv_entry[8] =
     {add_i2rm_bv,  or_i2rm_bv,  adc_i2rm_bv,  sbb_i2rm_bv,  and_i2rm_bv,  sub_i2rm_bv,  xor_i2rm_bv,   cmp_i2rm_bv};
 
 /* 0xc0 */
@@ -104,15 +104,15 @@ instr_func group_2_cv_entry[8] =
     {inv, inv, inv, inv, shl_c2rm_bv, inv, shr_c2rm_bv, sar_c2rm_bv};
 
 /* 0xf6 */
-instr_func __ref_group_3_b_entry[8] =
+instr_func group_3_b_entry[8] =
     {test_i2rm_b, inv, not_rm_b, neg_rm_b, mul_rm2a_b,  imul_rm2a_b, div_rm2a_b, idiv_rm2a_b};
 
 /* 0xf7 */
-instr_func __ref_group_3_v_entry[8] =
+instr_func group_3_v_entry[8] =
     {test_i2rm_v, inv, not_rm_v, neg_rm_v, mul_rm2a_v, imul_rm2a_v, div_rm2a_v, idiv_rm2a_v};
 
 /* 0xff */
-instr_func __ref_group_5_indirect_entry[8] =
+instr_func group_5_indirect_entry[8] =
     {inc_rm_v, dec_rm_v, inv, inv, jmp_near_indirect, inv, push_rm_v, inv};
 
 instr_func group_7_entry[8] =
