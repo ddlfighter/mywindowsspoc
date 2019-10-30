@@ -121,7 +121,7 @@ void Set_CF_shr(uint32_t dest,uint32_t src,size_t data_size){
 	}
 }
 	
-void Set_OF_sub(uint32_result ,uint32_t src,uint32_t dest,size_t data_size)
+void Set_OF_sub(uint32_result,uint32_t src,uint32_t dest,size_t data_size)
 {
 	switch (data_size)
 	{
