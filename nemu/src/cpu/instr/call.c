@@ -32,7 +32,7 @@ make_instr_func(call_rm_v){
     len += modrm_rm(eip +1, &rm);
 
     operand_read(&rm);
-
+    print_asm_1("call","",1+data_size/8,&rm);
     int offset = sign_ext(rm.val,data_size);
 
     OPERAND temp;
