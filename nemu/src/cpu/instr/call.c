@@ -37,14 +37,13 @@ make_instr_func(call_rm_v){
 
     OPERAND temp;
     temp.type = OPR_MEM;
-    temp.sreg = SREG_CS;
     temp.data_size = data_size;
     cpu.esp -= 4;
-    temp.val = eip + len;
+    temp.val = eip + 1 + data_size/8;
     temp.addr = cpu.esp;
     operand_write(&temp);
 
-    cpu.eip += offset;
-    return len;
+    cpu.eip = offset;
+    return 0;
 
 }
