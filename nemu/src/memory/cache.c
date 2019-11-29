@@ -80,3 +80,12 @@ uint_t cache_read(paddr_t paddr,size_t len,CacheLine *cache)
 	
 		
 }
+
+void cache_write(paddr_t paddr,size_t len,uint32_t data,CacheLine *cache)
+{
+	uint32_t tag = paddr>>13;		//19 bits tag
+	uint32_t grp_num = ((paddr<<19)>>19)>>6; //7 bits group number
+    uint8_t block_addr = (paddr<<26)>>26;   //6 bits block_addr
+
+	
+}
