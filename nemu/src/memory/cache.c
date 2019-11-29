@@ -15,5 +15,6 @@ uint_t cache_read(paddr_t paddr,size_t len,CacheLine *cache)
         uint8_t block_addr = (paddr<<26)>>26;   //6 bits block_addr
 	
 	uint32_t line_num = grp_num * 8;	//8-way set associative
+
 		
 }
