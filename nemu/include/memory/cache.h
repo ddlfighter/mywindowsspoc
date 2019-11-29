@@ -1,8 +1,8 @@
 ﻿struct CacheLine{
-	int valid_bit;
-	int sign;	
-	int data[6];
-}
+	uint_8 valid_bit;
+	uint_32 tag;	
+	uint_8 data[6];
+};
 
 init_cahce();
 
