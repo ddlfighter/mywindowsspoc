@@ -6,7 +6,6 @@
 #include "memory/mmu/page.h"
 #include "memory/mmu/tlb.h"
 #include <stdlib.h>
-#include <stdio.h>
 #include <time.h>
 
 
