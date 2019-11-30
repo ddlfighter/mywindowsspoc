@@ -54,18 +54,18 @@ uint32_t cache_read(paddr_t paddr,size_t len,struct CacheLine *cache)
 	printf("if_hit:%d\n",if_hit);
 	if(!if_hit)
 	{
-		bool empty = false;
+		bool exist = false;
 		int h = 0;
 		for(;h<8;h++)
 		{
 			if(cache[line_num_bg+h].valid_bit==0)
 			{
-				empty = true;
+				exist = true;
 				break;
 			}
 		}
 		printf("h is :%d\n",h);
-		if(!empty)
+		if(exist)
 		{
 			cache[line_num_bg+h].valid_bit = 1;
 			cache[line_num_bg+h].tag = tag;
