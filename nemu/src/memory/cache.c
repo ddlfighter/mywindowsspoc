@@ -51,7 +51,7 @@ uint32_t cache_read(paddr_t paddr,size_t len,struct CacheLine *cache)
 			break;
 		}
 	}
-	
+	printf("if_hit:%d\n",if_hit);
 	if(!if_hit)
 	{
 		bool empty = false;
