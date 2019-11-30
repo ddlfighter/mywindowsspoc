@@ -25,7 +25,7 @@ uint32_t cache_read(paddr_t paddr,size_t len,struct CacheLine *cache)
 	//line begin
 	int offset=0;
 	bool if_hit = false;
-	printf("The  read hit line is in:%u\nThe read offset is:%u\nThe length is:%u\n",line_num_bg,block_addr,len);
+	//printf("The  read hit line is in:%u\nThe read offset is:%u\nThe length is:%u\n",line_num_bg,block_addr,len);
 	//dectected
 	for(;offset<8;offset++)
 	{
@@ -51,7 +51,7 @@ uint32_t cache_read(paddr_t paddr,size_t len,struct CacheLine *cache)
 			break;
 		}
 	}
-	printf("if_hit:%d\n",if_hit);
+	//printf("if_hit:%d\n",if_hit);
 	if(!if_hit)
 	{
 		bool empty = false;
@@ -64,7 +64,7 @@ uint32_t cache_read(paddr_t paddr,size_t len,struct CacheLine *cache)
 				break;
 			}
 		}
-		printf("h is :%d\n",h);
+		//printf("h is :%d\n",h);
 		if(!empty)
 		{
 			cache[line_num_bg+h].valid_bit = 1;
@@ -90,7 +90,7 @@ void cache_write(paddr_t paddr,size_t len,uint32_t data,struct CacheLine *cache)
 	uint32_t grp_num = ((paddr<<19)>>19)>>6; //7 bits group number
     uint32_t block_addr = (paddr<<26)>>26;   //6 bits block_addr
 	uint32_t line_num_bg = grp_num * 8;	//8-way set associative
-	printf("The write hit line is in:%u\nThe write offset is:%u\n",line_num_bg,block_addr);
+	//printf("The write hit line is in:%u\nThe write offset is:%u\n",line_num_bg,block_addr);
 	int offset=0;
 	
 	//dectected
