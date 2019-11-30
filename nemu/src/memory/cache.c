@@ -92,7 +92,7 @@ void cache_write(paddr_t paddr,size_t len,uint32_t data,struct CacheLine *cache)
 	uint32_t grp_num = (paddr>>6)&0x7f; //7 bits group number
     uint32_t block_addr = paddr&0x3f;   //6 bits block_addr
 	uint32_t line_num_bg = grp_num * 8;	//8-way set associative
-	printf("The write hit line is in:%u\nThe write offset is:%u\n",line_num_bg,block_addr);
+	//printf("The write hit line is in:%u\nThe write offset is:%u\n",line_num_bg,block_addr);
 	int offset=0;
 	
 	//dectected
