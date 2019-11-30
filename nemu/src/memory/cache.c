@@ -42,7 +42,7 @@ uint32_t cache_read(paddr_t paddr,size_t len,struct CacheLine *cache)
 				uint32_t ret2=0;
 				memcpy(&ret1,cache[line_num_bg+offset].data+block_addr,(64-block_addr));
 				ret2 = cache_read(paddr+64-block_addr,block_addr+len-64,cache);
-				ret2 = ret2 < (8*(64-block_addr));
+				ret2 = ret2 << (8*(64-block_addr));
 				ret = ret2 | ret1;
 			}	
 			if_hit = true;
