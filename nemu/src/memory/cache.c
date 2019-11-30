@@ -30,7 +30,7 @@ uint32_t cache_read(paddr_t paddr,size_t len,struct CacheLine *cache)
 	for(;offset<8;offset++)
 	{
 		//hit the target
-			printf("The hit line is in:%n\n",&line_num_bg);
+			printf("The hit line is in:%u\n",&line_num_bg);
 		if(cache[line_num_bg+offset].tag == tag&&cache[line_num_bg+offset].valid_bit==1)
 		{
 			if(block_addr+len<=64)	//does'n need enjambment
