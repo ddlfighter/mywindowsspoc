@@ -32,13 +32,14 @@ uint32_t cache_read(paddr_t paddr,size_t len,struct CacheLine *cache)
 		//hit the target
 		if(cache[line_num_bg+offset].tag == tag&&cache[line_num_bg+offset].valid_bit==1)
 		{
-			if(block_addr+len<64)	//does'n need enjambment
+			if(block_addr+len<=64)	//does'n need enjambment
 			{
 				memcpy(&ret,cache[line_num_bg+offset].data+block_addr,len);
 			} 
 			else
 			{
-				uint32_t ret1,ret2;
+				uint32_t ret1=0;
+				uint32_t ret2=0;
 				memcpy(&ret1,cache[line_num_bg+offset].data+block_addr,(64-block_addr));
 				ret2 = cache_read(paddr+64-block_addr,block_addr+len-64,cache);
 				ret2 = ret2 < (8*(64-block_addr));
