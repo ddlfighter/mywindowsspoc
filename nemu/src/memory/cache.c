@@ -55,7 +55,7 @@ uint32_t cache_read(paddr_t paddr,size_t len,struct CacheLine *cache)
 		bool empty = false;
 		for(;h<8;h++)
 		{
-			if(cache[line_num_bg+h].valid_bit==)
+			if(cache[line_num_bg+h].valid_bit==0)
 			{
 				empty = true;
 				break;

@@ -23,3 +23,4 @@ uint32_t cache_read(paddr_t paddr,size_t len,struct CacheLine* cache);
 
 void cache_write(paddr_t paddr,size_t len,uint32_t data,struct CacheLine *cache);
 
+#endif
