@@ -87,6 +87,7 @@ uint32_t cache_read(paddr_t paddr,size_t len,struct CacheLine *cache)
 
 void cache_write(paddr_t paddr,size_t len,uint32_t data,struct CacheLine *cache)
 {
+	memcpy(hw_mem+paddr,&data,len);
 	uint32_t tag = (paddr>>13)&0x7ffff;		//19 bits tag
 	uint32_t grp_num = (paddr>>6)&0x7f; //7 bits group number
     uint32_t block_addr = paddr&0x3f;   //6 bits block_addr
