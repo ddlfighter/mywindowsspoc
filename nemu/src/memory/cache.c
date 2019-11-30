@@ -64,7 +64,7 @@ uint32_t cache_read(paddr_t paddr,size_t len,struct CacheLine *cache)
 				break;
 			}
 		}
-		//printf("h is :%d\n",h);
+		printf("h is :%d\n",h);
 		if(!empty)
 		{
 			cache[line_num_bg+h].valid_bit = 1;
