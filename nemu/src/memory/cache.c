@@ -65,8 +65,7 @@ uint32_t cache_read(paddr_t paddr,size_t len,struct CacheLine *cache)
 				break;
 			}
 		}
-		printf("The  read hit line is in:%u\nThe read offset is:%u\nThe length is:%u\n",line_num_bg,block_addr,len);
-		printf("if_hit:%d\n",if_hit);
+
 		printf("h is %d:",h);
 		if(exist)
 		{
