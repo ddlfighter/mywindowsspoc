@@ -3,7 +3,7 @@
 
 struct CacheLine cl[1024];
 
-init_cache()		//initialize 
+void init_cache()		//initialize 
 {
 	for(int i=0;i<1024;i++)
 		cl[i].valid_bit = 0;
