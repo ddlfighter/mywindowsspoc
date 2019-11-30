@@ -70,7 +70,7 @@ uint32_t cache_read(paddr_t paddr,size_t len,struct CacheLine *cache)
 			cache[line_num_bg+h].valid_bit = 1;
 			cache[line_num_bg+h].tag = tag;
 			memcpy(cache[line_num_bg+h].data,hw_mem+paddr-block_addr,64);
-			memcpy(&ret,cache[line_num_bg+h].data,len);
+			memcpy(&ret,hw_mem+paddr,len);
 		}
 		else
 		{
@@ -78,7 +78,7 @@ uint32_t cache_read(paddr_t paddr,size_t len,struct CacheLine *cache)
 			cache[line_num_bg+h].valid_bit = 1;
 			cache[line_num_bg+h].tag = tag;
 			memcpy(cache[line_num_bg+h].data,hw_mem+paddr-block_addr,64);
-			memcpy(&ret,cache[line_num_bg+h].data,len);
+			memcpy(&ret,hw_mem+paddr,len);
 		}
 	}
 	return ret;
