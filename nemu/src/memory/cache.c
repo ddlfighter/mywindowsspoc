@@ -17,9 +17,9 @@ void init_cache()		//initialize
 uint32_t cache_read(paddr_t paddr,size_t len,struct CacheLine *cache)
 {
 	uint32_t ret;
-	uint32_t tag = paddr>>13;		//19 bits tag
-	uint32_t grp_num = ((paddr<<19)>>19)>>6; //7 bits group number
-    uint32_t block_addr = (paddr<<26)>>26;   //6 bits block_addr
+	uint32_t tag = (paddr>>13)&0x7ffff;		//19 bits tag
+	uint32_t grp_num = (((paddr<<19)>>19)>>6)&0x7f; //7 bits group number
+    uint32_t block_addr = paddr&0x3f;   //6 bits block_addr
 	
 	uint32_t line_num_bg = grp_num * 8;	//8-way set associative
 	//line begin
@@ -32,7 +32,7 @@ uint32_t cache_read(paddr_t paddr,size_t len,struct CacheLine *cache)
 		//hit the target
 		if(cache[line_num_bg+offset].tag == tag&&cache[line_num_bg+offset].valid_bit==1)
 		{
-			if(block_addr+len<=64)	//does'n need enjambment
+			if(block_addr+len<64)	//does'n need enjambment
 			{
 				memcpy(&ret,cache[line_num_bg+offset].data+block_addr,len);
 			} 
