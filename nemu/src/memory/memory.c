@@ -6,6 +6,8 @@
 #include <stdio.h>
 #include "memory/cache.h"
 
+extern struct CacheLine cl[1024];
+
 uint8_t hw_mem[MEM_SIZE_B];
 
 uint32_t hw_mem_read(paddr_t paddr, size_t len)

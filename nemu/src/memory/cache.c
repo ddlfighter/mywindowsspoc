@@ -1,7 +1,7 @@
 #include "memory/cache.h"
 #include "memory/memory.h"
 
-CacheLine cl[1024];
+struct CacheLine cl[1024];
 
 init_cache()		//initialize 
 {
