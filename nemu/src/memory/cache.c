@@ -30,7 +30,6 @@ uint32_t cache_read(paddr_t paddr,size_t len,struct CacheLine *cache)
 	for(;offset<8;offset++)
 	{
 		//hit the target
-		
 		if(cache[line_num_bg+offset].tag == tag&&cache[line_num_bg+offset].valid_bit==1)
 		{
 			if(block_addr+len<=64)	//does'n need enjambment
@@ -47,13 +46,13 @@ uint32_t cache_read(paddr_t paddr,size_t len,struct CacheLine *cache)
 				ret = ret2 | ret1;
 			}	
 			if_hit = true;
-
 			break;
 		}
 	}
 	printf("if_hit:%d\n",if_hit);
 	if(!if_hit)
 	{
+		memcpy(&ret,hw_mem+paddr,len);
 		bool exist = false;
 		int h = 0;
 		for(;h<8;h++)
@@ -65,6 +64,7 @@ uint32_t cache_read(paddr_t paddr,size_t len,struct CacheLine *cache)
 			}
 		}
 		printf("h is :%d\n",h);
+		
 		if(exist)
 		{
 
@@ -72,8 +72,8 @@ uint32_t cache_read(paddr_t paddr,size_t len,struct CacheLine *cache)
 			cache[line_num_bg+h].tag = tag;
 		
 			memcpy(cache[line_num_bg+h].data,hw_mem+paddr-block_addr,64);
-							printf("valid\n");
-			memcpy(&ret,hw_mem+paddr,len);
+			printf("valid\n");
+
 		}
 		else
 		{
@@ -81,8 +81,6 @@ uint32_t cache_read(paddr_t paddr,size_t len,struct CacheLine *cache)
 			cache[line_num_bg+h].valid_bit = 1;
 			cache[line_num_bg+h].tag = tag;
 			memcpy(cache[line_num_bg+h].data,hw_mem+paddr-block_addr,64);
-			printf("valid\n");
-			memcpy(&ret,hw_mem+paddr,len);
 		}
 	}
 	return ret;
