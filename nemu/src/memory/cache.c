@@ -100,15 +100,8 @@ void cache_write(paddr_t paddr,size_t len,uint32_t data,struct CacheLine *cache)
 		//hit the target
 		if(cl[line_num_bg+offset].tag == tag&&cl[line_num_bg+offset].valid_bit==1)
 		{
-			if(block_addr+len<=64)	//does'n need enjambment
-			{
 				memcpy(cl[line_num_bg+offset].data+block_addr,&data,len);
-			} 
-			else
-			{
-				cache_write(paddr,64-block_addr,data,cl);
-				cache_write(paddr+64-block_addr,len+block_addr-64,data>>(8*(64-block_addr)),cl);
-			}
+	
 			break;
 		}
 	}
