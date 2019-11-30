@@ -30,6 +30,7 @@ uint32_t cache_read(paddr_t paddr,size_t len,struct CacheLine *cache)
 	for(;offset<8;offset++)
 	{
 		//hit the target
+		printf("The hit line is in:%d",&(line_num_bg+offset));
 		if(cache[line_num_bg+offset].tag == tag&&cache[line_num_bg+offset].valid_bit==1)
 		{
 			if(block_addr+len<=64)	//does'n need enjambment
@@ -46,6 +47,7 @@ uint32_t cache_read(paddr_t paddr,size_t len,struct CacheLine *cache)
 				ret = ret2 | ret1;
 			}	
 			if_hit = true;
+
 			break;
 		}
 	}
