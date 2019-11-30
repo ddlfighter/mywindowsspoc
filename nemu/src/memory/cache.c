@@ -20,12 +20,12 @@ uint32_t cache_read(paddr_t paddr,size_t len,struct CacheLine *cache)
 	uint32_t tag = (paddr>>13)&0x7ffff;		//19 bits tag
 	uint32_t grp_num = (paddr>>6)&0x7f; //7 bits group number
     uint32_t block_addr = paddr&0x3f;   //6 bits block_addr
-	printf("The  read hit line is in:%u\nThe read offset is:%u\nThe length is:%u\n",line_num_bg,block_addr,len);
+
 	uint32_t line_num_bg = grp_num * 8;	//8-way set associative
 	//line begin
 	int offset=0;
 	bool if_hit = false;
-	
+		printf("The  read hit line is in:%u\nThe read offset is:%u\nThe length is:%u\n",line_num_bg,block_addr,len);
 	//dectected
 	for(;offset<8;offset++)
 	{
