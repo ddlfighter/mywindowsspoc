@@ -88,7 +88,6 @@ void cache_write(paddr_t paddr,size_t len,uint32_t data,struct CacheLine *cache)
 	uint32_t line_num_bg = grp_num * 8;	//8-way set associative
 
 	int offset=0;
-	bool if_hit = false;
 	
 	//dectected
 	for(;offset<8;offset++)
