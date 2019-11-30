@@ -49,11 +49,7 @@ uint32_t cache_read(paddr_t paddr,size_t len,struct CacheLine *cache)
 			break;
 		}
 	}
-	if(!if_hit&&block_addr!=0)
-	{
-				printf("The  read hit line is in:%u\nThe read offset is:%u\nThe length is:%u\n",line_num_bg,block_addr,len);
-		printf("if_hit:%d\n",if_hit);
-	}
+
 
 	if(!if_hit)
 	{
@@ -69,7 +65,12 @@ uint32_t cache_read(paddr_t paddr,size_t len,struct CacheLine *cache)
 				break;
 			}
 		}
-		printf("h is :%d\n",h);
+	if(block_addr!=0)
+	{
+		printf("The  read hit line is in:%u\nThe read offset is:%u\nThe length is:%u\n",line_num_bg,block_addr,len);
+		printf("if_hit:%d\n",if_hit);
+		printf("h is %d:",h);
+	}
 		
 		if(exist)
 		{
