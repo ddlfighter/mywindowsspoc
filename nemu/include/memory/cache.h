@@ -1,4 +1,11 @@
-﻿#include <stdlib.h>
+﻿#ifndef __CACHE_H__
+#define __CACHE_H__
+
+#include "nemu.h"
+#include "memory/mmu/segment.h"
+#include "memory/mmu/page.h"
+#include "memory/mmu/tlb.h"
+#include <stdlib.h>
 #include <stdio.h>
 #include <time.h>
 
