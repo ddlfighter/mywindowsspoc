@@ -1,5 +1,5 @@
 #include "memory/cache.h"
-
+#include "memory/memory.h"
 
 CacheLine cl[1024];
 
@@ -9,83 +9,92 @@ init_cache()		//initialize
 		cl[i].valid_bit = 0;
 }
 
-uint_t cache_read(paddr_t paddr,size_t len,CacheLine *cache)
+uint32_t cache_read(paddr_t paddr,size_t len,CacheLine *cache)
 {
 	uint32_t ret;
 	uint32_t tag = paddr>>13;		//19 bits tag
 	uint32_t grp_num = ((paddr<<19)>>19)>>6; //7 bits group number
-    uint8_t block_addr = (paddr<<26)>>26;   //6 bits block_addr
+    uint32_t block_addr = (paddr<<26)>>26;   //6 bits block_addr
 	
 	uint32_t line_num_bg = grp_num * 8;	//8-way set associative
 	//line begin
 	int offset=0;
 	bool flag1 = false;
 	
-	//tag dectected
+	//dectected
 	for(;offset<8;offset++)
 	{
-		if(cl[line_num_bg+offset].tag == tag)
+		//hit the target
+		if(cache[line_num_bg+offset].tag == tag&&cache[line_num_bg+offset].valid_bit==1)
 		{
-			flag1 = true; break;
+			if(block_addr+len<=64)	//does'n need enjambment
+			{
+				memcpy(&ret,cache[line_num_bg+offset].data+block_addr,len);
+			} 
+			else
+			{
+				uint32_t ret1,ret2;
+				memcpy(&ret1,cache[line_num_bg+offset].data+block_addr,(64-block_addr));
+				ret2 = cache_read(paddr+64-block_addr,block_addr+len-64,cache);
+				ret2 = ret2 < (8*(64-block_addr));
+				ret = ret2 | ret1;
+			}	
+			flag1 = true;
+			break;
 		}
 	}
-
-	//valid bit detected
-	if(flag1)		//exist
+	
+	if(!flag1)
 	{
-		uint32_t line_num = line_num_bg + offset;
-		if(cl[line_num].valid_bit==1)   //valid bit
+		int h = 0;
+		bool empty = false;
+		for(;h<8;h++)
 		{
-				uint32_t needread = len * 8;
-			
-				uint32_t st =  block_addr;	//start
-				if(st+needread>=64)		//kuahang
-				{
-					memcpy(&ret,st,64-st);
-					ret = ret <<(64-st);
-					uint32_t ret1 = cache_read(paddr+(st+needread)%64,(len-(64-st)/8),cl);
-					ret = ret | ret1;
-				}
-				else
-				{
-						memcpy(&ret, st, len);
-				}		
+			if(cache[line_num_bg+h].valid_bit==)
+			{
+				empty = true;
+				break;
+			}
+		}
+		if(!empty)
+		{
+			cache[line_num_bg+h].valid_bit = 1;
+			cache[line_num_bg+h].tag = tag;
+			memcpy(cache[line_num_bg+h].data,paddr-block_addr,64);
+			memcpy(ret,cache[line_num_bg+h].data,len);
 		}
 		else
 		{
-
-
-		}	
+			h = 0;
+			cache[line_num_bg+h].valid_bit = 1;
+			cache[line_num_bg+h].tag = tag;
+			memcpy(cache[line_num_bg+h].data,paddr-block_addr,64);
+			memcpy(ret,cache[line_num_bg+h].data,len);
+		}
 	}
-	else
-	{
-			bool empty = false;
-			int h = 0;
-			for(;h<8;h++)
-			{
-				if(cl[line_num_bg+h].valid_bit==0)
-				{
-					empty = true;
-					break;
-				}
-			}
-			if(!empty)		//random number to choose someone replaced
-			{
-				srand(time(NULL));
-				h = rand()%8;
-			}
-			//write
-
-	}
-	
-		
+	return ret;
 }
 
 void cache_write(paddr_t paddr,size_t len,uint32_t data,CacheLine *cache)
 {
 	uint32_t tag = paddr>>13;		//19 bits tag
 	uint32_t grp_num = ((paddr<<19)>>19)>>6; //7 bits group number
-    uint8_t block_addr = (paddr<<26)>>26;   //6 bits block_addr
+    uint32_t block_addr = (paddr<<26)>>26;   //6 bits block_addr
 
+	int offset=0;
+	bool flag1 = false;
 	
+	//dectected
+	for(;offset<8;offset++)
+	{
+		//hit the target
+		if(cache[line_num_bg+offset].tag == tag&&cache[line_num_bg+offset].valid_bit==1)
+		{
+			if(block_addr+len<=64)	//does'n need enjambment
+			{
+				memcpy(cache[line_num_bg+offset].data+block_addr,&data,len);
+			} 
+			break;
+		}
+	}
 }

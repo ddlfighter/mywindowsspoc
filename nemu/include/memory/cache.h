@@ -1,5 +1,11 @@
-﻿struct CacheLine{
-	uint_8 valid_bit;
+﻿#include <stdlib.h>
+#include <stdio.h>
+#include <time.h>
+
+
+
+struct CacheLine{
+	uint8_t valid_bit;	
 	uint32_t tag;	
 	//uint_8 data[6];
 	char data[64];
