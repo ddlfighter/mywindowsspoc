@@ -67,10 +67,11 @@ uint32_t cache_read(paddr_t paddr,size_t len,struct CacheLine *cache)
 		printf("h is :%d\n",h);
 		if(exist)
 		{
+			printf("valid\n");
 			cache[line_num_bg+h].valid_bit = 1;
 			cache[line_num_bg+h].tag = tag;
 			memcpy(cache[line_num_bg+h].data,hw_mem+paddr-block_addr,64);
-			printf("valid\n");
+			
 			memcpy(&ret,hw_mem+paddr,len);
 		}
 		else
