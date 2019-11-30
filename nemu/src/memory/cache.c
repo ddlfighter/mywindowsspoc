@@ -100,7 +100,7 @@ void cache_write(paddr_t paddr,size_t len,uint32_t data,struct CacheLine *cache)
 		//hit the target
 		if(cl[line_num_bg+offset].tag == tag&&cl[line_num_bg+offset].valid_bit==1)
 		{
-				memcpy(cl[line_num_bg+offset].data+block_addr,&data,len);
+			memcpy(cl[line_num_bg+offset].data+block_addr,&data,len);
 	
 			break;
 		}
