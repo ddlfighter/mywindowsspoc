@@ -51,3 +51,27 @@ make_instr_func(jmp_short_)
 
         return 1+rel.data_size/8;       
 }
+
+make_instr_func(jmp_far_imm)
+{
+        OPREAND rel;
+        rel.type = OPR_IMM;
+        rel.sreg = SREG_CS;
+        rel.data_size = 32;
+        rel.addr = eip + 1;
+        operand_read(&rel);
+        
+        print_asm_1("jmp","",7,&rel);
+
+        if(data_size==16)
+        {
+                cpu.eip = rel.val&0xFFFF;
+        }
+        else
+        {
+                cpu.eip = rel.val;
+        }
+        cpu.cs.val = instr_fetch(eip+5,2);
+        load_sreg(1);
+        return 0;
+}
