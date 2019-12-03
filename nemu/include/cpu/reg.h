@@ -115,6 +115,7 @@ typedef struct
 	};
 	// control registers, todo: define type CR0
 	CR0 cr0;
+	cacheline cache[6];
 #else
 	uint8_t dummy_seg[142]; // make __ref_ instructions safe to use
 #endif
