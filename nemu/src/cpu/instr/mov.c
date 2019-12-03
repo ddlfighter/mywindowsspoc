@@ -90,6 +90,21 @@ make_instr_func(mov_srm162r_l) {
         return len;
 }
 
+make_instr_func(mov_rm2s_w)
+{
+        int len = 1;
+        opr_dest.data_size = 16;
+        opr_src.data_size =  16;
+        len+=modrm_r_rm(eip+1,&opr_dest,&opr_src);
+        opr_dest.type = OPR_SREG;
+        operand_read(&opr_src);
+        opr_dest.val = opr_src.val;
+        operand_write(&opr_dest);
+        print_asm_2("mov","w",len,&opr_src,&opr_dest);
+        return len;
+}
+
+
 
 
 make_instr_func(push_es)
