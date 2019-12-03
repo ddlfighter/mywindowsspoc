@@ -134,7 +134,7 @@ typedef struct
 	uint8_t dummy_page[4];
 #endif
 
-#ifdef IA32_INTR
+#ifndef IA32_INTR
 	// interrupt
 	IDTR idtr; // IDTR, todo: define type IDTR
 	uint8_t intr;
