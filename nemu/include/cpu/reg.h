@@ -56,7 +56,7 @@ typedef struct
 
 #ifdef IA32_SEG
 
-	typedef struct{
+	typedef struct GDTR{
 		uint32_t limit:16;
 		uint32_t base:32;
 	}GDTR;
