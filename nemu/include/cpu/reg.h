@@ -72,7 +72,7 @@ typedef struct
 		uint32_t val;
 	}CR0;
 
-	typedef strcut{
+	typedef struct{
 		//the 16-bit visible part,i.e.,the selector
 		union{
 			uint16_t val;
@@ -92,7 +92,7 @@ typedef struct
 		uint32_t soft_use:1;
 	};
 	}SegReg;
-	
+
 	GDTR gdtr; // GDTR, todo: define type GDTR
 	// segment registers, todo: define type SegReg
 	union {
