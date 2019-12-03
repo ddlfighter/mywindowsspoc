@@ -92,7 +92,7 @@ typedef struct
 		uint32_t privilege_level:2;
 		uint32_t soft_use:1;
 	};
-	}SegReg;
+}SegReg;
 
 	GDTR gdtr; // GDTR, todo: define type GDTR
 	// segment registers, todo: define type SegReg
