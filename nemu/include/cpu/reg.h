@@ -54,9 +54,7 @@ typedef struct
 		uint32_t val;
 	} eflags;
 
-#ifdef IA32_SEG
-
-	 typedef struct GDTR{
+ typedef struct GDTR{
 		uint32_t limit:16;
 		uint32_t base:32;
 	}GDTR;
@@ -93,6 +91,8 @@ typedef struct
 		uint32_t soft_use:1;
 	};
 }SegReg;
+
+#ifdef IA32_SEG
 
 	GDTR gdtr; // GDTR, todo: define type GDTR
 	// segment registers, todo: define type SegReg
