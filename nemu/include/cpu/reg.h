@@ -41,6 +41,13 @@
 	};
 }SegReg;
 
+typedef struct 
+{
+	uint32_t base;
+	uint32_t limit:20;
+	uint32_t privilege_level:3;
+}cacheline;
+
 
 // define the structure of registers
 typedef struct
