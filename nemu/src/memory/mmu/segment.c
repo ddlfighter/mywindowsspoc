@@ -26,7 +26,7 @@ void load_sreg(uint8_t sreg)
 	//get values
 	assert(base==0||limit==0xFFFFF||segdesc->granularity==1);
 	cpu.cache[sreg].base = base;
-	cpu.cache[serg].limit = limit;
-	cpu.cache[serg].privilege_level = privilege_level;
+	cpu.cache[sreg].limit = limit;
+	cpu.cache[sreg].privilege_level = privilege_level;
 
 }
