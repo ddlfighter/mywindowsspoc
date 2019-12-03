@@ -18,6 +18,15 @@ void load_sreg(uint8_t sreg)
 	 * The visible part of 'sreg' should be assigned by mov or ljmp already.
 	 */
 	uint32_t addr = (uint32_t)hw_mem+cpu.gdtr.base+cpu.segReg[sreg].index*8;
-	
+	SegDesc* segdesc = (void*)addr;
+	//use void* to use the address
+	uint32_t base = (segdesc->base_31_24<<24)+(segdesc->base_23_16<<16)+segdesc->base_15_0;
+	uint32_t limit = (segdesc->limit_19_16<<16)+segdesc->limit_15_0;
+	uint32_t privilege_level = segdesc->privilege_level;
+	//get values
+	assert(base==0||limit==0xFFFFF||segdesc->granularity==1);
+	cpu.cache[sreg].base = base;
+	cpu.cache[serg].limit = limit;
+	cpu.cache[serg].privilege_level = privilege_level;
 
 }
