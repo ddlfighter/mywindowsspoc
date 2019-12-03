@@ -3,6 +3,14 @@
 
 #include "nemu.h"
 
+typedef struct 
+{
+	uint16_t limit;
+	uint16_t base;
+}IDTR;
+
+
+
  typedef struct GDTR{
 		uint32_t limit:16;
 		uint32_t base:32;
