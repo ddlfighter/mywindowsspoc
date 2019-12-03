@@ -1,6 +1,6 @@
 #include "cpu/instr.h"
 
-make_instr_func(lidt)
+/* make_instr_func(lidt)
 {
     int len = 1;
     OPERAND rel;
@@ -14,4 +14,4 @@ make_instr_func(lidt)
     cpu.idtr.base = rel.val;
     print_asm_1("lidt","",len,&rel);
     return len;
-}
+}*/
