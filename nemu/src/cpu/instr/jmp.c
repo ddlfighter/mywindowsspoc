@@ -54,7 +54,7 @@ make_instr_func(jmp_short_)
 
 make_instr_func(jmp_far_imm)
 {
-        OPREAND rel;
+        OPERAND rel;
         rel.type = OPR_IMM;
         rel.sreg = SREG_CS;
         rel.data_size = 32;
