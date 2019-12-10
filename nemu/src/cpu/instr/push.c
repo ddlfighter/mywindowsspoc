@@ -3,13 +3,12 @@
 static void instr_execute_1op()
 {
     operand_read(&opr_src);
-    cpu.esp -= 4;
-    OPERAND temp;
-    temp.type = OPR_MEM;
-    temp.addr = cpu.esp;
-    temp.data_size = data_size;
-    temp.val = opr_src.val;
-    operand_write(&temp);
+    cpu.esp -= data_size/8;
+    opr_src.type = OPR_MEM;
+    opr_src.addr = cpu.esp;
+    opr_src.data_size = data_size;
+    opr_src.val = sign_ext(opr_src.val,opr_src.data_size);
+    operand_write(&opr_src);
 
 }
 
