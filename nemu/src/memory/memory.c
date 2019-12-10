@@ -45,7 +45,12 @@ void paddr_write(paddr_t paddr, size_t len, uint32_t data)
 uint32_t laddr_read(laddr_t laddr, size_t len)
 {
 	assert(len==1||len==2||len==4);
+
 	uint32_t paddr = laddr;
+	if((int)paddr<0)
+	{
+		assert(cpu.cr0.pe&&cpu.cr0.pgcpu.cr0.pe==1);
+	}
 	if(cpu.cr0.pe&&cpu.cr0.pg)
 		{
 			printf("%x\n",paddr);
