@@ -47,7 +47,7 @@ uint32_t laddr_read(laddr_t laddr, size_t len)
 	assert(len==1||len==2||len==4);
 
 	uint32_t paddr = laddr;
-	printf("%x\n",paddr);
+	printf("%x\n\n\n\n\n\n\n",paddr);
 	if(cpu.cr0.pe&&cpu.cr0.pg)
 		{
 			paddr = page_translate(laddr);
