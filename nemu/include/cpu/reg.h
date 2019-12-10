@@ -16,17 +16,25 @@ typedef struct
 		uint32_t base:32;
 	}GDTR;
 
-	typedef union{
-		struct{
-			uint32_t pe:1;
-			uint32_t mp:1;
-			uint32_t em:1;
-			uint32_t ts:1;
-			uint32_t reserve:26;
-			uint32_t pg:1;
-		};
-		uint32_t val;
-	}CR0;
+typedef union{
+	struct{
+		uint32_t pe:1;
+		uint32_t mp:1;
+		uint32_t em:1;
+		uint32_t ts:1;
+		uint32_t reserve:26;
+		uint32_t pg:1;
+	};
+	uint32_t val;
+}CR0;
+
+typedef union{
+	struct{
+		uint32_t reserve:12;
+		uint32_t pdtr:20;
+	};
+	uint32_t val;
+}CR3;
 
 	typedef struct{
 		//the 16-bit visible part,i.e.,the selector
