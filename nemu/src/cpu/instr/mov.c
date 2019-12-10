@@ -116,7 +116,7 @@ make_instr_func(mov_c2r_l)
         operand_read(&opr_src);
         opr_dest.val = opr_src.val;
         operand_write(&opr_dest);
-        printf("c2r  %x   %x\n",cpu.cr0.pg,cpu.cr0.pe);
+        printf("c2r  %x   %x\n",opr_src.val,opr_dest.val);
         return len;
 }
 
@@ -131,7 +131,7 @@ make_instr_func(mov_r2c_l)
         operand_read(&opr_src);
         opr_dest.val = opr_src.val;
         operand_write(&opr_dest);
-        printf("r2c   %x   %x\n",cpu.cr0.pg,cpu.cr0.pe);
+        printf("r2c  %x   %x\n",opr_src.val,opr_dest.val);
         return len;
 }
 
