@@ -49,7 +49,7 @@ uint32_t laddr_read(laddr_t laddr, size_t len)
 	uint32_t paddr = laddr;
 	if((int)paddr<0)
 	{
-		assert(cpu.cr0.pe&&cpu.cr0.pgcpu.cr0.pe==1);
+		assert(cpu.cr0.pe&&cpu.cr0.pg);
 	}
 	if(cpu.cr0.pe&&cpu.cr0.pg)
 		{
