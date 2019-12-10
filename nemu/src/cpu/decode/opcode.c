@@ -112,10 +112,10 @@ instr_func group_3_v_entry[8] =
     {test_i2rm_v, inv, not_rm_v, neg_rm_v, mul_rm2a_v, imul_rm2a_v, div_rm2a_v, idiv_rm2a_v};
 
 /* 0xff */
-instr_func group_5_indirect_entry[8] =
+instr_func __ref_group_5_indirect_entry[8] =
     {inc_rm_v, dec_rm_v, call_rm_v, inv, jmp_near_indirect, inv, push_rm_v, inv};
 
-instr_func group_7_entry[8] =
+instr_func __ref_group_7_entry[8] =
     {inv, inv, lgdt, inv, inv, inv, inv, inv};
 
 /* 0xd8 */
