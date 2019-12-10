@@ -68,23 +68,23 @@ instr_func __ref_opcode_entry[256] = {
 };
 
 /* 0x80 */
-instr_func group_1_b_entry[8] =
+instr_func __ref_group_1_b_entry[8] =
     {add_i2rm_b, or_i2rm_b, adc_i2rm_b, sbb_i2rm_b, and_i2rm_b, sub_i2rm_b, xor_i2rm_b,  cmp_i2rm_b};
 
 /* 0x81 */
-instr_func group_1_v_entry[8] =
+instr_func __ref_group_1_v_entry[8] =
     {add_i2rm_v, or_i2rm_v, adc_i2rm_v, sbb_i2rm_v, and_i2rm_v, sub_i2rm_v, xor_i2rm_v,  cmp_i2rm_v};
 
 /* 0x83 */
-instr_func group_1_bv_entry[8] =
+instr_func __ref_group_1_bv_entry[8] =
     {add_i2rm_bv,  or_i2rm_bv,  adc_i2rm_bv,  sbb_i2rm_bv,  and_i2rm_bv,  sub_i2rm_bv,  xor_i2rm_bv,   cmp_i2rm_bv};
 
 /* 0xc0 */
-instr_func group_2_b_entry[8] =
+instr_func __ref_group_2_b_entry[8] =
     {inv, inv, inv, inv, shl_i2rm_b, shr_i2rm_b, inv, sar_i2rm_b};
 
 /* 0xc1 */
-instr_func group_2_v_entry[8] =
+instr_func __ref_group_2_v_entry[8] =
     {inv, inv, inv, inv, shl_i2rm_bv, shr_i2rm_bv, inv, sar_i2rm_bv};
 
 /* 0xd0 */
