@@ -100,7 +100,7 @@ instr_func __ref_group_2_cb_entry[8] =
     {inv, inv, inv, inv, __ref_shl_c2rm_b, inv, __ref_shr_c2rm_b, __ref_sar_c2rm_b};
 
 /* 0xd3 */
-instr_func group_2_cv_entry[8] =
+instr_func __ref_group_2_cv_entry[8] =
     {inv, inv, inv, inv, __ref_shl_c2rm_bv, inv, __ref_shr_c2rm_bv, __ref_sar_c2rm_bv};
 
 /* 0xf6 */
