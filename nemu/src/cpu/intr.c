@@ -5,7 +5,7 @@
 void raise_intr(uint8_t intr_no)
 {
 #ifdef IA32_INTR
-	uint32_t addr = (uint32_t)hwmem+page_translate(segment_translate(cpu.idtr.base+8*intr_no,SREG_DS));
+	uint32_t addr = (uint32_t)hw_mem+page_translate(segment_translate(cpu.idtr.base+8*intr_no,SREG_DS));
 	GateDesc* gatedesc = (void*)addr;
 	cpu.esp -= 4;
 	vaddr_write(cpu.esp,SREG_DS,4,cpu.eflags.val);
