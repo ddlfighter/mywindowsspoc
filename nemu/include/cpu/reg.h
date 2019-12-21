@@ -5,15 +5,15 @@
 
 typedef struct 
 {
-	uint32_t limit:16;
-	uint32_t base:32;
+	uint16_t limit;
+	uint32_t base;
 }IDTR;
 
 
 
  typedef struct GDTR{
-		uint32_t limit:16;
-		uint32_t base:32;
+		uint16_t limit;
+		uint32_t base;
 	}GDTR;
 
 typedef union{
