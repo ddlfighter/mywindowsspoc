@@ -5,8 +5,7 @@
 void raise_intr(uint8_t intr_no)
 {
 #ifdef IA32_INTR
-	printf("Please implement raise_intr()");
-	assert(0);
+	uint32_t addr = (uint32_t)hwmem+page_translate(segment_translate(cpu.idtr.base+8*intr_no,SREG_DS));
 #endif
 }
 
