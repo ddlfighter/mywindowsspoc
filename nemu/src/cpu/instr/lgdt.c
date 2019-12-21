@@ -3,13 +3,16 @@
 make_instr_func(lgdt)
 {
     int len = 1;
-    OPERAND rm;
-    rm.data_size = data_size;
-    len+=modrm_rm(eip+1,&rm);
-
-    cpu.gdtr.limit = paddr_read(rm.addr,2);
-    cpu.gdtr.base = paddr_read(rm.addr+2,4);
-    print_asm_1("lgdt","",5,&rm);
-
+    OPERAND rel;
+    len+=modrm_rm(eip+1,&rel);
+    rel.data_size = 16;
+    operand_read(&rel);
+    cpu.gdtr.limit = rel.val;
+    rel.addr+=2;
+    rel.data_size = 32;
+    operand_read(&rel);
+    cpu.gdtr.base = rel.val;
+    print_asm_1("lgdt","",len,&rel);
     return len;
+
 }
