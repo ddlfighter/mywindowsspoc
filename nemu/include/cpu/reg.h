@@ -12,6 +12,18 @@ typedef struct {
 	uint32_t base;
 } IDTR;
 
+	typedef struct{
+		//the 16-bit visible part,i.e.,the selector
+		union{
+			uint16_t val;
+			struct{
+				uint32_t rpl:2;
+				uint32_t ti:1;
+				uint32_t index:13;
+			};
+		};
+
+
 	struct {
 		uint32_t base;
 		uint32_t limit;
@@ -20,6 +32,7 @@ typedef struct {
 		uint32_t soft_use:1;
 	};
 }SegReg;
+
 
 typedef union {
 	struct {
