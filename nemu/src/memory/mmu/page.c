@@ -13,7 +13,7 @@ paddr_t page_translate(laddr_t laddr)
 	PTE * ptable = (PTE *)(hw_mem+(pdir->page_frame<<12)+(page<<2));
 	if(pdir->present!=1)
 		printf("%d    %d\n",tmp,dir);
-	assert(pdir->present==1);
+	//assert(pdir->present==1);
 	assert(ptable->present==1);
 	paddr_t ret = (ptable->page_frame<<12)+offset;
 	return ret;
