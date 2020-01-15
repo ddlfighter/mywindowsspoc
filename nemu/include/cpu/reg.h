@@ -95,27 +95,38 @@ typedef struct {
 	} eflags;
 
 #ifdef IA32_SEG
+
 	GDTR gdtr; // GDTR, todo: define type GDTR
 	// segment registers, todo: define type SegReg
 	union {
 		SegReg segReg[6];
-		struct { SegReg es, cs, ss, ds, fs, gs; };
+		struct
+		{
+			SegReg es, cs, ss, ds, fs, gs;
+		};
 	};
 	// control registers, todo: define type CR0
 	CR0 cr0;
 	cacheline cache[6];
+#else
+	uint8_t dummy_seg[142]; // make __ref_ instructions safe to use
 #endif
 #ifdef IA32_PAGE
 	// control registers, todo: define type CR3
 	CR3 cr3;
+#else
+	uint8_t dummy_page[4];
 #endif
 
 #ifdef IA32_INTR
 	// interrupt
 	IDTR idtr; // IDTR, todo: define type IDTR
 	uint8_t intr;
+#else
+	uint8_t dummy_intr[7];	
 #endif
 } CPU_STATE;
+
 
 
 enum {REG_AL, REG_CL, REG_DL, REG_BL, REG_AH, REG_CH, REG_DH, REG_BH};
