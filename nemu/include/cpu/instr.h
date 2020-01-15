@@ -35,7 +35,7 @@ extern uint8_t data_size;
 #include "cpu/instr/jcc.h"
 #include "cpu/instr/set.h"
 #include "cpu/instr/lgdt.h"
-
+#include "cpu/instr/lidt.h"
 
 /* TODO: add more instructions here */
 make_instr_func(leave);
