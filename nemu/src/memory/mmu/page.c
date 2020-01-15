@@ -8,7 +8,6 @@ paddr_t page_translate(laddr_t laddr)
 	uint32_t dir = (laddr>>22)&0x3ff;
 	uint32_t page = (laddr>>12)&0x3ff;
 	uint32_t offset = laddr & 0xfff;
-	uint32_t tmp = cpu.cr3.pdtr<<12;
 	PDE * pdir = (PDE *)(hw_mem+(cpu.cr3.pdtr<<12)+(dir<<2));
 	PTE * ptable = (PTE *)(hw_mem+(pdir->page_frame<<12)+(page<<2));
 	assert(pdir->present==1);
