@@ -41,6 +41,8 @@ extern uint8_t data_size;
 #include "cpu/instr/int.h"
 
 /* TODO: add more instructions here */
+make_instr_func(popa);
+
 make_instr_func(leave);
 make_instr_func(cmps_b);
 make_instr_func(cmps_v);
