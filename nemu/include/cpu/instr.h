@@ -36,6 +36,7 @@ extern uint8_t data_size;
 #include "cpu/instr/set.h"
 #include "cpu/instr/lgdt.h"
 #include "cpu/instr/lidt.h"
+#include "cpu/instr/cli.h"
 
 /* TODO: add more instructions here */
 make_instr_func(leave);
