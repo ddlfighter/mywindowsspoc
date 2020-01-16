@@ -62,6 +62,7 @@ make_instr_func(push_es);
 make_instr_func(jnbe_short);
 make_instr_func(or_i2rm_b);
 make_instr_func(ret_near);
+make_instr_func(call_near_indirect);
 
 make_instr_func(test_i2rm_v);
 make_instr_func(not_rm_v);
