@@ -39,6 +39,7 @@ extern uint8_t data_size;
 #include "cpu/instr/cli.h"
 #include "cpu/instr/sti.h"
 #include "cpu/instr/int.h"
+#include "cpu/instr/in.h"
 
 /* TODO: add more instructions here */
 make_instr_func(popa);
