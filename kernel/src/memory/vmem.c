@@ -25,7 +25,7 @@ void create_video_mapping()
 		ptable->val = make_pte(i << 12);
 		ptable ++;
 	}
-	panic("please implement me");
+	//panic("please implement me");
 }
 
 void video_mapping_write_test()
