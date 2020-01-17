@@ -37,15 +37,36 @@ void ide_write(uint8_t *, uint32_t, uint32_t);
 
 int fs_open(const char *pathname, int flags)
 {
-	panic("Please implement fs_open at fs.c");
+	//panic("Please implement fs_open at fs.c");
+	int i=0;
+	for(;i<NR_FILES;i++)
+		if(!strcmp(pathname,file_table[i].name))
+			{
+				files[i+3].used = true;
+				files[i+3].index = i+3;
+				files[i+3].offset = 0;
+				return i+3;
+			}
+	assert("NO THING TO LOAD");		
 	return -1;
 }
 
 size_t fs_read(int fd, void *buf, size_t len)
 {
 	assert(fd > 2);
-	panic("Please implement fs_read at fs.c");
-	return -1;
+	assert(fd < NR_FILES + 3);
+	//panic("Please implement fs_read at fs.c");
+	int rlen = len;
+	
+
+	if(files[fd].offset + len - 1 > file_table[fd - 3].size){
+		rlen = file_table[fd - 3].size - files[fd].offset + 1;
+		Log("size over file offset: %d; len: %d; size: %d", files[fd].offset, len, file_table[fd - 3].size);	
+	}
+	
+	ide_read(buf, file_table[fd - 3].disk_offset + files[fd].offset, rlen);
+	files[fd].offset += rlen;
+	return rlen;
 }
 
 size_t fs_write(int fd, void *buf, size_t len)
@@ -69,12 +90,41 @@ size_t fs_write(int fd, void *buf, size_t len)
 
 off_t fs_lseek(int fd, off_t offset, int whence)
 {
-	panic("Please implement fs_lseek at fs.c");
+	assert(fd < NR_FILES + 3);
+	if(whence == SEEK_SET){
+		files[fd].offset = offset;
+		if(files[fd].offset >= file_table[fd - 3].size){
+			assert("offset overflow");
+		}
+
+		return files[fd].offset;
+	}
+	if(whence == SEEK_CUR){
+		files[fd].offset += offset;
+		if(files[fd].offset >= file_table[fd - 3].size){
+			assert("offset overflow");	
+		}
+		return files[fd].offset;
+	}
+	if(whence == SEEK_END){
+		files[fd].offset = offset + file_table[fd - 3].size - 1;
+		if(files[fd].offset >= file_table[fd - 3].size){
+			assert("offset overflow");
+		}
+		return files[fd].offset;
+	}
+	//panic("Please implement fs_lseek at fs.c");
 	return -1;
 }
 
 int fs_close(int fd)
 {
-	panic("Please implement fs_close at fs.c");
+	assert(fd < NR_FILES + 3);
+	
+	files[fd].used = false;
+	files[fd].index = 0;
+	files[fd].offset = 0;
+	return 0;	
+	//panic("Please implement fs_close at fs.c");
 	return -1;
 }
