@@ -73,7 +73,22 @@ bool process_keys(void (*key_press_callback)(int), void (*key_release_callback)(
 	 * Remember to enable interrupts before returning from the function.
 	 */
 
-	assert(0);
+	//assert(0);
+	bool judge = false;
+	for(int i = 0; i < NR_KEYS; i ++) {
+		if(key_state[i] == KEY_STATE_PRESS) {
+			judge = true;
+			key_press_callback(keycode_hash[i]);
+			return true;
+		}
+		if(key_state[i] == KEY_STATE_RELEASE){
+			judge = true;
+			key_release_callback(keycode_hash[i]);
+			return false;
+		}
+			
+	}
+
 	sti();
 	return false;
 }
