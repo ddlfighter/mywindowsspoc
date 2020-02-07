@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # About this repository
 
 This is the repository for *PA 2019 Fall* (version 3.2) in Nanjing University.
@@ -19,3 +20,7 @@ http://114.212.80.187/wl/pa2019_fall/issues
 This server is scheduled to reboot every day at 5am, and backup every sunday at 1am. 
 
 DO NOT try to pull or push around this time.
+=======
+# mywindowsspoc
+daily learning code
+>>>>>>> 78de7bee7482672c1bbc6c9c80f08e4f802c9b0b
