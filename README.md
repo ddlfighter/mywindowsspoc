@@ -1,0 +1,2 @@
+# mywindowsspoc
+daily learning code
